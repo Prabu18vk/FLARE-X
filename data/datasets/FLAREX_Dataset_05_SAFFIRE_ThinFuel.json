@@ -1,0 +1,172 @@
+{
+  "dataset_id": "FLAREX-Dataset-05",
+  "title": "NASA SAFFIRE I–V thin-fuel microgravity flame-spread conditions and flame-size records",
+  "version": "1.0",
+  "status": "publication-table transcription; selected test-condition and flame-size fields only",
+  "gravity_condition": "microgravity",
+  "platform": "Cygnus cargo spacecraft in orbit",
+  "investigation_family": "Spacecraft Fire Safety Experiment (SAFFIRE)",
+  "records": [
+    {
+      "flight_sample": "I-1",
+      "flight": "SAFFIRE-I",
+      "material": "SIBAL (cotton/fiberglass fabric)",
+      "air_flow_cm_s": 20,
+      "oxygen_concentration_percent": 21,
+      "pressure_kPa": 100,
+      "steady_state_flame_size_cm": 4,
+      "maximum_flame_size_cm": 6.2,
+      "duct_height_cm": 46,
+      "sample_width_cm": 41,
+      "sample_length_cm": 94
+    },
+    {
+      "flight_sample": "II-5",
+      "flight": "SAFFIRE-II",
+      "material": "SIBAL (cotton/fiberglass fabric)",
+      "air_flow_cm_s": 20,
+      "oxygen_concentration_percent": 21,
+      "pressure_kPa": 100,
+      "steady_state_flame_size_cm": 4,
+      "maximum_flame_size_cm": 4,
+      "duct_height_cm": 46,
+      "sample_width_cm": 5,
+      "sample_length_cm": 30
+    },
+    {
+      "flight_sample": "II-6",
+      "flight": "SAFFIRE-II",
+      "material": "SIBAL (cotton/fiberglass fabric)",
+      "air_flow_cm_s": 25,
+      "oxygen_concentration_percent": 21,
+      "pressure_kPa": 100,
+      "steady_state_flame_size_cm": 5,
+      "maximum_flame_size_cm": 5,
+      "duct_height_cm": 46,
+      "sample_width_cm": 5,
+      "sample_length_cm": 30
+    },
+    {
+      "flight_sample": "III-1",
+      "flight": "SAFFIRE-III",
+      "material": "SIBAL (cotton/fiberglass fabric)",
+      "air_flow_cm_s": 25,
+      "oxygen_concentration_percent": 21,
+      "pressure_kPa": 100,
+      "steady_state_flame_size_cm": 5,
+      "maximum_flame_size_cm": 8.2,
+      "duct_height_cm": 46,
+      "sample_width_cm": 41,
+      "sample_length_cm": 94
+    },
+    {
+      "flight_sample": "IV-1",
+      "flight": "SAFFIRE-IV",
+      "material": "SIBAL (cotton/fiberglass fabric)",
+      "air_flow_cm_s": 20,
+      "oxygen_concentration_percent": 22,
+      "pressure_kPa": 100,
+      "steady_state_flame_size_cm": 8.5,
+      "maximum_flame_size_cm": 11,
+      "duct_height_cm": 30,
+      "sample_width_cm": 41,
+      "sample_length_cm": 50
+    },
+    {
+      "flight_sample": "V-2",
+      "flight": "SAFFIRE-V",
+      "material": "Cotton jersey",
+      "air_flow_cm_s": 20,
+      "oxygen_concentration_percent": 26.2,
+      "pressure_kPa": 70.7,
+      "steady_state_flame_size_cm": 10,
+      "maximum_flame_size_cm": 14,
+      "duct_height_cm": 30,
+      "sample_width_cm": 41,
+      "sample_length_cm": 50
+    }
+  ],
+  "parameter_coverage": {
+    "extinction_velocity_or_limit": {
+      "status": "not_reported_in_this_table",
+      "value": null
+    },
+    "soot_volume_fraction": {
+      "status": "not_reported_in_this_table",
+      "value": null
+    },
+    "radiant_heat_flux": {
+      "status": "not_reported_as_flux_in_this_table",
+      "value": null,
+      "note": "Other SAFFIRE reports discuss radiant heat output, but this table does not provide calibrated flux values."
+    },
+    "cool_flame_dynamics": {
+      "status": "not_reported",
+      "value": null
+    },
+    "peak_surface_temperature": {
+      "status": "not_reported_in_this_table",
+      "value": null
+    },
+    "flame_spread_rate": {
+      "status": "reported_in_source_figure_not_digitized_here",
+      "value": null,
+      "note": "The source includes a spread-rate plot (Figure 10), but this JSON does not estimate values by reading plotted points."
+    },
+    "flame_size": {
+      "status": "reported",
+      "fields": [
+        "steady_state_flame_size_cm",
+        "maximum_flame_size_cm"
+      ]
+    }
+  },
+  "gravity_comparison": {
+    "microgravity": "All listed SAFFIRE flight cases were conducted in orbit under microgravity conditions.",
+    "lunar": null,
+    "martian": null,
+    "earth": null
+  },
+  "source": {
+    "title": "Fire Safety Implications of Preliminary Results from Saffire IV and V Experiments on Large Scale Spacecraft Fires",
+    "authors": [
+      "David L. Urban",
+      "Gary A. Ruff",
+      "Paul Ferkul",
+      "John Easton",
+      "Jay Owens",
+      "Sandra Olson",
+      "Marit Meyer",
+      "Claire Fortenberry",
+      "John Brooker",
+      "John Graf",
+      "Michael Casteel",
+      "Balazs Toth",
+      "Florian Meyer",
+      "Christian Eigenbrod",
+      "James S. T’ien",
+      "Ya-Ting T. Liao",
+      "Chengyao Li",
+      "A. Carlos Fernandez-Pello",
+      "Guillaume Legros",
+      "Augustin Guibaud",
+      "Nickolay Smirnov",
+      "Osamu Fujita",
+      "Grunde Jomaas"
+    ],
+    "document_id": "20210011521",
+    "conference": "50th International Conference on Environmental Systems (ICES-2021), paper ICES-2021-266",
+    "source_url": "https://ntrs.nasa.gov/api/citations/20210011521/downloads/ICES%202021-266%200503-2021%20final.pdf",
+    "table": "Table 2: Test Conditions and flame size for thin samples",
+    "page": 8,
+    "doi": null,
+    "doi_note": "No DOI was identified for this conference paper in the NASA NTRS record. Do not substitute the DOI of a related journal article."
+  },
+  "transcription_notes": [
+    "Values are transcribed from Table 2 in the cited paper.",
+    "The paper's Figure 10 contains flame-spread-rate curves, but no graph points were digitized or approximated for this dataset.",
+    "This is a compact publication-table dataset, not the full SAFFIRE raw telemetry, image sequence, or PSI archive.",
+    "null means the cited table does not report the requested value; it does not mean zero."
+  ],
+  "created_utc_date": "2026-11-15"
+}

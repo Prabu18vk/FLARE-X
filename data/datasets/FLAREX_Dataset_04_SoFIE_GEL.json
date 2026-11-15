@@ -1,0 +1,153 @@
+{
+  "dataset_id": "FLAREX-Dataset-04",
+  "title": "NASA SoFIE-GEL microgravity solid-fuel flame extinction cases",
+  "version": "1.0",
+  "status": "source-transcribed experimental case summary; not raw telemetry",
+  "gravity_condition": "microgravity",
+  "platform": "International Space Station (ISS)",
+  "investigation": "Solid Fuel Ignition and Extinction – Growth and Extinction Limit (SoFIE-GEL)",
+  "fuel": "PMMA (polymethyl methacrylate) sphere",
+  "sample_diameter_cm": 4.0,
+  "records": [
+    {
+      "case": 1,
+      "sample_id": "1409B",
+      "extinction_mode": "quenching",
+      "sample_location": "inside duct",
+      "flow_velocity_cm_s": 4.83,
+      "reynolds_number": 128.8,
+      "flow_strain_rate_s-1": 3.63,
+      "oxygen_percent_at_extinction": 14.21,
+      "pressure_atm": 1.04,
+      "conductive_heat_loss_W_cm2": 0.36,
+      "source_reference": "Table 1, page 3"
+    },
+    {
+      "case": 2,
+      "sample_id": "1408A",
+      "extinction_mode": "blowoff",
+      "sample_location": "inside duct",
+      "flow_velocity_cm_s": 34.28,
+      "reynolds_number": 914.1,
+      "flow_strain_rate_s-1": 25.71,
+      "oxygen_percent_at_extinction": 14.99,
+      "pressure_atm": 1.06,
+      "conductive_heat_loss_W_cm2": 0.95,
+      "source_reference": "Table 1, page 3"
+    },
+    {
+      "case": 3,
+      "sample_id": "1402C",
+      "extinction_mode": "intermediate",
+      "sample_location": "inside duct",
+      "flow_velocity_cm_s": 11.5,
+      "reynolds_number": 306.7,
+      "flow_strain_rate_s-1": 8.63,
+      "oxygen_percent_at_extinction": 13.54,
+      "pressure_atm": 1.07,
+      "conductive_heat_loss_W_cm2": 0.37,
+      "source_reference": "Table 1, page 3"
+    },
+    {
+      "case": 4,
+      "sample_id": "1409C",
+      "extinction_mode": "quenching",
+      "sample_location": "duct exit",
+      "flow_velocity_cm_s": 0.44,
+      "reynolds_number": 11.7,
+      "flow_strain_rate_s-1": 0.33,
+      "oxygen_percent_at_extinction": 20.77,
+      "pressure_atm": 1.03,
+      "conductive_heat_loss_W_cm2": 0.17,
+      "additional_observations": {
+        "nominal_flow_velocity_during_pulsation_cm_s": 0.2,
+        "pulsation_duration_s": 927,
+        "pulsation_frequency_Hz": {
+          "initial": 1.4,
+          "quasi_steady_range": [
+            0.8,
+            1.0
+          ],
+          "near_extinction": 0.8
+        },
+        "peak_flame_tip_pulsation_speed_cm_s": 25,
+        "observation_reference": "Sections 3.4–3.5, pages 5–6"
+      },
+      "source_reference": "Table 1, page 3; additional observations pages 5–6"
+    },
+    {
+      "case": 5,
+      "sample_id": "1410C",
+      "extinction_mode": "blowoff",
+      "sample_location": "duct exit",
+      "flow_velocity_cm_s": 49.68,
+      "reynolds_number": 1324.8,
+      "flow_strain_rate_s-1": 37.26,
+      "oxygen_percent_at_extinction": 14.37,
+      "pressure_atm": 1.07,
+      "conductive_heat_loss_W_cm2": null,
+      "source_reference": "Table 1, page 3; heat loss explicitly marked not recorded"
+    }
+  ],
+  "parameter_coverage": {
+    "extinction_velocity_or_limit": {
+      "status": "partially_reported",
+      "available": "Flow velocity and oxygen concentration at extinction for five cases; these are case conditions, not a complete extinction-boundary map.",
+      "unit": "cm/s and percent O2"
+    },
+    "soot_volume_fraction": {
+      "status": "not_reported",
+      "value": null,
+      "unit": null
+    },
+    "radiant_heat_flux": {
+      "status": "not_reported",
+      "value": null,
+      "note": "The paper reports conductive heat loss for four cases, not calibrated radiant heat flux.",
+      "unit": null
+    },
+    "cool_flame_dynamics": {
+      "status": "not_reported",
+      "value": null
+    },
+    "peak_surface_temperature": {
+      "status": "not_reported_as_peak_value",
+      "value": null,
+      "note": "The setup describes embedded thermocouples and subsurface temperature gradients, but this paper's five-case table does not provide peak surface temperature."
+    },
+    "flame_spread_rate": {
+      "status": "partially_reported_distinct_measure",
+      "value": 25,
+      "unit": "cm/s",
+      "note": "For Case 4, the paper reports a peak flame-tip pulsation speed of about 25 cm/s. This is not a steady solid-surface flame-spread rate."
+    }
+  },
+  "gravity_comparison": {
+    "microgravity": "Measured in the ISS experiment.",
+    "lunar": null,
+    "martian": null,
+    "earth": "The paper discusses comparison with normal-gravity modeling/context, but this five-case table contains no Earth-gravity experimental records."
+  },
+  "missing_value_convention": "null means the cited source does not report a value; it must not be interpreted as zero.",
+  "source": {
+    "title": "Extinction of solid diffusion flame in microgravity: details of quenching and blowoff processes",
+    "authors": [
+      "Chengyao Li",
+      "James S. T’ien",
+      "Paul V. Ferkul",
+      "Sandra L. Olson",
+      "Michael C. Johnston"
+    ],
+    "publisher": "NASA Technical Reports Server (NASA-hosted conference paper)",
+    "document_id": "20240007628",
+    "url": "https://ntrs.nasa.gov/api/citations/20240007628/downloads/GELsymposiumfinalRev1.pdf",
+    "table_reference": "Table 1, page 3",
+    "additional_references": [
+      "Sections 3.1–3.5, pages 3–6"
+    ],
+    "doi": null,
+    "doi_note": "No DOI is stated in the NASA-hosted source document. Do not substitute a related journal article DOI for this source."
+  },
+  "provenance_note": "Values are transcribed from the cited NASA-hosted paper. This is a compact publication-level case dataset, not the complete SoFIE-GEL telemetry/video archive. No values have been interpolated or inferred.",
+  "created_utc_date": "2026-11-15"
+}

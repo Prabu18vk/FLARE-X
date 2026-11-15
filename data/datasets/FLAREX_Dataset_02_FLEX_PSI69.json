@@ -1,0 +1,947 @@
+{
+  "dataset_id": "FLAREX-NASA-002",
+  "dataset_name": "FLEX - Flame Extinguishment Experiment (NASA Table IX extract)",
+  "dataset_scope": "First 10 tests (FLEX-001 to FLEX-010) from the published NASA summary table; this is a transparent subset, not the complete FLEX archive.",
+  "investigation": {
+    "nasa_psi_id": "PSI-69",
+    "title": "Flame Extinguishment Experiment (FLEX)",
+    "project_type": "Microgravity Investigation",
+    "platform": "International Space Station",
+    "hardware": [
+      "Combustion Integrated Rack (CIR)",
+      "Multi-User Droplet Combustion Apparatus (MDCA)"
+    ],
+    "fuel_types_in_this_extract": [
+      "methanol",
+      "n-heptane"
+    ]
+  },
+  "sources": [
+    {
+      "organization": "NASA Glenn Research Center",
+      "document_title": "Detailed Results From the Flame Extinguishment Experiment (FLEX), March 2009 to December 2011",
+      "document_number": "NASA/TP-2015-216046",
+      "nasa_ntrs_record": "https://ntrs.nasa.gov/citations/20150023456",
+      "direct_pdf": "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf",
+      "doi": null,
+      "doi_note": "No DOI is listed on the NASA NTRS record for this technical publication.",
+      "data_pages": [
+        20,
+        21
+      ],
+      "data_section": "Appendix A, Table IX",
+      "supporting_pages": [
+        1,
+        4,
+        16,
+        19
+      ],
+      "supporting_notes": [
+        "Page 1 describes the first 284 tests and measurement types.",
+        "Page 4 explains soot-volume-fraction imaging capability and radiometer limitations.",
+        "Page 16 states that detailed droplet and flame histories/raw experiment data are available through NASA PSI (registration required).",
+        "Page 19 defines the Table IX columns."
+      ]
+    },
+    {
+      "organization": "NASA Physical Sciences Informatics",
+      "nasa_psi_id": "PSI-69",
+      "record_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+      "doi": "10.60555/mbq8-0451",
+      "note": "Official PSI investigation record and repository entry."
+    }
+  ],
+  "gravity_coverage": {
+    "measured_condition": "microgravity",
+    "lunar_gravity_data_included": false,
+    "martian_gravity_data_included": false,
+    "earth_gravity_data_included": false,
+    "note": "Do not treat the FLEX ISS data as lunar, Martian, or Earth-gravity measurements."
+  },
+  "units_and_conventions": {
+    "pressure": "mmHg absolute",
+    "mole_fractions": "dimensionless fractions (multiply by 100 for percent)",
+    "diameter": "mm",
+    "burning_rate_constant": "mm^2/s",
+    "burn_time": "s",
+    "missing_value": "JSON null means not reported or not available in this table; it does not mean zero."
+  },
+  "records": [
+    {
+      "test_id": "FLEX-001",
+      "cir_identifier": "20CAL08",
+      "test_date": "2009-03-05",
+      "test_time_gmt": "17:22:03",
+      "fuel": "methanol",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 757.7,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 1.69,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": 0.89,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.52,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 4.3,
+          "unit": "s"
+        },
+        "test_end_classification": "disruption"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-002",
+      "cir_identifier": "20CAL10",
+      "test_date": "2009-03-05",
+      "test_time_gmt": "19:20:06",
+      "fuel": "methanol",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 762.0,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 1.86,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": 0.94,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.6,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 5.0,
+          "unit": "s"
+        },
+        "test_end_classification": "extinction"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-003",
+      "cir_identifier": "20CAL12",
+      "test_date": "2009-03-05",
+      "test_time_gmt": "21:17:46",
+      "fuel": "methanol",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 764.2,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 1.61,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": 0.92,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.58,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 3.2,
+          "unit": "s"
+        },
+        "test_end_classification": "extinction"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-004",
+      "cir_identifier": "30CAL02",
+      "test_date": "2009-03-31",
+      "test_time_gmt": "17:16:18",
+      "fuel": "methanol",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 760.0,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 2.06,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": null,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.6,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 7.64,
+          "unit": "s"
+        },
+        "test_end_classification": "extinction"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-005",
+      "cir_identifier": "30CAL03",
+      "test_date": "2009-03-31",
+      "test_time_gmt": "19:00:48",
+      "fuel": "methanol",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 760.0,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 1.92,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": 0.81,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.48,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 6.34,
+          "unit": "s"
+        },
+        "test_end_classification": "extinction"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-006",
+      "cir_identifier": "40CAL01",
+      "test_date": "2009-03-31",
+      "test_time_gmt": "20:05:49",
+      "fuel": "methanol",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 760.0,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 2.54,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": 1.53,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.51,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 9.6,
+          "unit": "s"
+        },
+        "test_end_classification": "extinction"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-007",
+      "cir_identifier": "20CAL13",
+      "test_date": "2009-04-10",
+      "test_time_gmt": "13:26:11",
+      "fuel": "n-heptane",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 761.3,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 1.87,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": null,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.67,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 5.3,
+          "unit": "s"
+        },
+        "test_end_classification": "disruption"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-008",
+      "cir_identifier": "30CAL06",
+      "test_date": "2009-04-10",
+      "test_time_gmt": "18:07:15",
+      "fuel": "n-heptane",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 762.4,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 2.95,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": null,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.79,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 14.8,
+          "unit": "s"
+        },
+        "test_end_classification": "disruption"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-009",
+      "cir_identifier": "30CAL07",
+      "test_date": "2009-04-10",
+      "test_time_gmt": null,
+      "fuel": "n-heptane",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 760.0,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.79,
+        "carbon_dioxide_mole_fraction": 0.0,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": null,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": null,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": null,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": null,
+          "unit": "s"
+        },
+        "test_end_classification": "disruption"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    },
+    {
+      "test_id": "FLEX-010",
+      "cir_identifier": "256F002",
+      "test_date": "2009-05-22",
+      "test_time_gmt": "14:53:27",
+      "fuel": "methanol",
+      "gravity_condition": {
+        "category": "microgravity",
+        "platform": "International Space Station",
+        "numeric_g_value": null,
+        "source_note": "NASA report states buoyant flow was negligible for all experiments in this report; it does not provide a single numeric g value per test."
+      },
+      "ambient_conditions": {
+        "absolute_pressure": {
+          "value": 2319.7,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": 0.21,
+        "nitrogen_mole_fraction": 0.09,
+        "carbon_dioxide_mole_fraction": 0.7,
+        "helium_mole_fraction": 0.0
+      },
+      "droplet_measurements": {
+        "initial_diameter": {
+          "value": 3.86,
+          "unit": "mm"
+        },
+        "visible_flame_extinction_diameter": {
+          "value": null,
+          "unit": "mm"
+        },
+        "average_burning_rate_constant": {
+          "value": 0.37,
+          "unit": "mm^2/s"
+        },
+        "burn_time": {
+          "value": 13.6,
+          "unit": "s"
+        },
+        "test_end_classification": "extinction"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_velocity_in_this_table",
+          "related_observation": "Visible flame extinction diameter and test-end classification are reported where available."
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_included_as_numeric_value_in_summary_table",
+          "note": "NASA describes HiBMs as capable of measuring soot volume fraction in soot-producing heptane flames; the summary table does not give a numerical soot-volume-fraction value."
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "note": "NASA states the radiometers were not sensitive enough to provide reliable quantitative flame-radiation data."
+        },
+        "cool_flame_dynamics": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_for_this_test_in_summary_table"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_measured_or_not_reported_in_this_summary_table"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_test_table",
+          "note": "FLEX measured droplet combustion, not solid-surface flame spread."
+        }
+      },
+      "source_location": {
+        "document_pages": [
+          20,
+          21
+        ],
+        "document_section": "Appendix A, A.1 Summary Data, Table IX",
+        "notes": "Values transcribed from NASA Table IX. A dash in NASA's table is represented as null; null does not mean zero."
+      }
+    }
+  ],
+  "parameter_availability": {
+    "extinction_velocity_or_limit": "No extinction velocity is tabulated. Visible flame extinction diameter and test-end classification are tabulated.",
+    "soot_volume_fraction": "NASA describes measurement capability for soot-producing heptane flames, but numeric soot-volume-fraction values are not in Table IX.",
+    "radiant_heat_flux": "Not available as a reliable quantitative measurement in this report; radiometers were insufficiently sensitive.",
+    "cool_flame_dynamics": "Qualitative cool-flame observations are discussed for selected tests in Appendix A; no standardized numeric cool-flame time series is provided in Table IX.",
+    "peak_surface_temperature": "Not reported in this dataset extract.",
+    "flame_spread_rate": "Not applicable to the isolated liquid-droplet tests in Table IX."
+  },
+  "quality_and_provenance": [
+    "All numeric values in records are transcribed from NASA/TP-2015-216046 Table IX, pages 20-21.",
+    "No values have been generated, interpolated, or inferred.",
+    "NASA's table reports ambient composition as mole fractions, not percentages.",
+    "NASA's table uses a dash where a measurement is unavailable or not applicable; those entries are null here.",
+    "The PSI record is the official investigation-level source; the NASA technical publication is the source for the numerical test table.",
+    "The published report states that the full detailed raw histories and electronic data files are available through NASA PSI; this JSON contains only the first ten rows visible in the published summary table."
+  ]
+}

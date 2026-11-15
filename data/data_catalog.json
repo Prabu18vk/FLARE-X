@@ -1,0 +1,75 @@
+{
+  "project": "FLARE-X",
+  "catalog_version": "0.1.0",
+  "data_policy": "Do not treat pending_source_verification datasets as validated ground truth.",
+  "datasets": [
+    {
+      "file": "FLAREX_Dataset_01_BASS_II.json",
+      "dataset_id": "FLAREX-NASA-001",
+      "title": "FLAREX_Dataset_01_BASS_II",
+      "gravity_condition": {
+        "label": "microgravity",
+        "platform": "International Space Station",
+        "gravity_value_g": null,
+        "note": "NASA identifies this as a microgravity investigation; the report does not provide a single numeric g value for each test."
+      },
+      "record_count": null,
+      "review_status": "pending_source_verification",
+      "note": "Imported from project working files. Verify every value against the cited primary source before scientific or safety-critical use."
+    },
+    {
+      "file": "FLAREX_Dataset_02_FLEX_PSI69.json",
+      "dataset_id": "FLAREX-NASA-002",
+      "title": "FLAREX_Dataset_02_FLEX_PSI69",
+      "gravity_condition": "not specified",
+      "record_count": 10,
+      "review_status": "pending_source_verification",
+      "note": "Imported from project working files. Verify every value against the cited primary source before scientific or safety-critical use."
+    },
+    {
+      "file": "FLAREX_Dataset_03_FLEX2_CoolFlame.json",
+      "dataset_id": "FLAREX-NASA-003",
+      "title": "FLAREX_Dataset_03_FLEX2_CoolFlame",
+      "gravity_condition": "not specified",
+      "record_count": 1,
+      "review_status": "pending_source_verification",
+      "note": "Imported from project working files. Verify every value against the cited primary source before scientific or safety-critical use."
+    },
+    {
+      "file": "FLAREX_Dataset_04_SoFIE_GEL.json",
+      "dataset_id": "FLAREX-Dataset-04",
+      "title": "NASA SoFIE-GEL microgravity solid-fuel flame extinction cases",
+      "gravity_condition": "microgravity",
+      "record_count": 5,
+      "review_status": "pending_source_verification",
+      "note": "Imported from project working files. Verify every value against the cited primary source before scientific or safety-critical use."
+    },
+    {
+      "file": "FLAREX_Dataset_05_SAFFIRE_ThinFuel.json",
+      "dataset_id": "FLAREX-Dataset-05",
+      "title": "NASA SAFFIRE I\u2013V thin-fuel microgravity flame-spread conditions and flame-size records",
+      "gravity_condition": "microgravity",
+      "record_count": 6,
+      "review_status": "pending_source_verification",
+      "note": "Imported from project working files. Verify every value against the cited primary source before scientific or safety-critical use."
+    },
+    {
+      "file": "FLAREX_Dataset_06_SAFFIRE_VI_HeatRelease.json",
+      "dataset_id": "FLAREX-Dataset-06",
+      "title": "NASA SAFFIRE VI preliminary heat-release and spacecraft environmental response",
+      "gravity_condition": "microgravity",
+      "record_count": 5,
+      "review_status": "pending_source_verification",
+      "note": "Imported from project working files. Verify every value against the cited primary source before scientific or safety-critical use."
+    },
+    {
+      "file": "FLAREX_Dataset_07_SAFFIRE_I_FlameSpread.json",
+      "dataset_id": "FLAREX-Dataset-07",
+      "title": "SAFFIRE-I large-scale cotton/fiberglass flame-spread measurements",
+      "gravity_condition": "microgravity",
+      "record_count": 2,
+      "review_status": "pending_source_verification",
+      "note": "Imported from project working files. Verify every value against the cited primary source before scientific or safety-critical use."
+    }
+  ]
+}

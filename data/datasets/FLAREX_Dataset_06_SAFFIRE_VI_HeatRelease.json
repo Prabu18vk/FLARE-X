@@ -1,0 +1,137 @@
+{
+  "dataset_id": "FLAREX-Dataset-06",
+  "title": "NASA SAFFIRE VI preliminary heat-release and spacecraft environmental response",
+  "version": "1.0",
+  "status": "publication table transcription; verify against original PDF before safety-critical use",
+  "gravity_condition": "microgravity",
+  "platform": "Uncrewed Cygnus spacecraft in orbit",
+  "records": [
+    {
+      "test": "IV-1",
+      "flight": "SAFFIRE-IV",
+      "material": "SIBAL",
+      "burn_duration_s": 130,
+      "oxygen_consumption_calorimetry_peak_heat_release_W": null,
+      "oxygen_consumption_calorimetry_total_heat_release_kJ": null,
+      "fuel_consumption_calorimetry_average_heat_release_W": 3150,
+      "fuel_consumption_calorimetry_total_heat_release_kJ": 409,
+      "max_temperature_SFU_outlet_C": 45,
+      "max_temperature_FFD_or_nearest_C": 25,
+      "FFD_inlet_CO2_increase_ppm": 1390,
+      "CO2_partial_pressure_increase_mmHg": 1.03,
+      "FFD_inlet_CO_increase_ppm": 80
+    },
+    {
+      "test": "V-2",
+      "flight": "SAFFIRE-V",
+      "material": "Cotton Jersey",
+      "burn_duration_s": 200,
+      "oxygen_consumption_calorimetry_peak_heat_release_W": null,
+      "oxygen_consumption_calorimetry_total_heat_release_kJ": null,
+      "fuel_consumption_calorimetry_average_heat_release_W": 2800,
+      "fuel_consumption_calorimetry_total_heat_release_kJ": 560,
+      "max_temperature_SFU_outlet_C": 46,
+      "max_temperature_FFD_or_nearest_C": 23,
+      "FFD_inlet_CO2_increase_ppm": 2360,
+      "CO2_partial_pressure_increase_mmHg": 1.26,
+      "FFD_inlet_CO_increase_ppm": 83
+    },
+    {
+      "test": "VI-2",
+      "flight": "SAFFIRE-VI",
+      "material": "SIBAL",
+      "burn_duration_s": 112,
+      "oxygen_consumption_calorimetry_peak_heat_release_W": 3217,
+      "oxygen_consumption_calorimetry_total_heat_release_kJ": 580,
+      "fuel_consumption_calorimetry_average_heat_release_W": 3650,
+      "fuel_consumption_calorimetry_total_heat_release_kJ": 409,
+      "max_temperature_SFU_outlet_C": 48,
+      "max_temperature_FFD_or_nearest_C": 20,
+      "FFD_inlet_CO2_increase_ppm": 2800,
+      "CO2_partial_pressure_increase_mmHg": 1.15,
+      "FFD_inlet_CO_increase_ppm": 120
+    },
+    {
+      "test": "VI-3",
+      "flight": "SAFFIRE-VI",
+      "material": "2-sided PMMA",
+      "burn_duration_s": 780,
+      "oxygen_consumption_calorimetry_peak_heat_release_W": 3080,
+      "oxygen_consumption_calorimetry_total_heat_release_kJ": 1280,
+      "fuel_consumption_calorimetry_average_heat_release_W": null,
+      "fuel_consumption_calorimetry_total_heat_release_kJ": null,
+      "max_temperature_SFU_outlet_C": 77,
+      "max_temperature_FFD_or_nearest_C": 21,
+      "FFD_inlet_CO2_increase_ppm": 8539,
+      "CO2_partial_pressure_increase_mmHg": 3.51,
+      "FFD_inlet_CO_increase_ppm": 308
+    },
+    {
+      "test": "VI-4",
+      "flight": "SAFFIRE-VI",
+      "material": "1-sided PMMA",
+      "burn_duration_s": 1200,
+      "oxygen_consumption_calorimetry_peak_heat_release_W": 1507,
+      "oxygen_consumption_calorimetry_total_heat_release_kJ": 830,
+      "fuel_consumption_calorimetry_average_heat_release_W": null,
+      "fuel_consumption_calorimetry_total_heat_release_kJ": null,
+      "max_temperature_SFU_outlet_C": 57,
+      "max_temperature_FFD_or_nearest_C": 21,
+      "FFD_inlet_CO2_increase_ppm": 8117,
+      "CO2_partial_pressure_increase_mmHg": 3.37,
+      "FFD_inlet_CO_increase_ppm": 320
+    }
+  ],
+  "parameter_coverage": {
+    "extinction_velocity_or_limit": {
+      "status": "not_reported_in_this_table",
+      "value": null
+    },
+    "soot_volume_fraction": {
+      "status": "not_reported_in_this_table",
+      "value": null
+    },
+    "radiant_heat_flux": {
+      "status": "not_reported_as_flux",
+      "value": null,
+      "note": "Heat-release rate is reported in W; it is not radiant heat flux in W/m2."
+    },
+    "cool_flame_dynamics": {
+      "status": "not_reported",
+      "value": null
+    },
+    "peak_surface_temperature": {
+      "status": "not_reported",
+      "value": null,
+      "note": "The reported maximum temperatures are spacecraft instrument locations (SFU outlet and FFD), not fuel surface temperatures."
+    },
+    "flame_spread_rate": {
+      "status": "not_reported_in_this_table",
+      "value": null
+    },
+    "heat_release": {
+      "status": "reported",
+      "unit": "W and kJ",
+      "method": "oxygen-consumption calorimetry and/or fuel-consumption calorimetry"
+    }
+  },
+  "gravity_comparison": {
+    "microgravity": "Orbital Cygnus experiment",
+    "lunar": null,
+    "martian": null,
+    "earth": null
+  },
+  "source": {
+    "title": "Preliminary Results from the Saffire VI Experiment",
+    "document_id": "20240007488",
+    "source_type": "NASA NTRS conference presentation",
+    "meeting": "53rd International Conference on Environmental Systems, 2024",
+    "table": "Heat Release Results, slide/page 20",
+    "url": "https://ntrs.nasa.gov/citations/20240007488",
+    "download_url": "https://ntrs.nasa.gov/api/citations/20240007488/downloads/Saffire%20ICES%202024%20Saffire%20presentation072124small.pdf",
+    "doi": null,
+    "doi_note": "No DOI shown in the NASA NTRS record."
+  },
+  "transcription_caution": "The numeric rows are transcribed from the indexed NASA presentation table text. Confirm column alignment against the original slide/PDF before operational or safety-critical use; null indicates blank/unreported cells, not zero.",
+  "created_utc_date": "2026-11-15"
+}

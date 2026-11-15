@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FLARE-X | Fire Intelligence Platform</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">F</span><span>FLARE-X<small>SPACECRAFT FIRE INTELLIGENCE</small></span></a>
+    <nav><a class="active" href="#">Overview</a><a href="#datasets">Datasets</a><a href="../docs/architecture.md">Architecture</a></nav>
+    <span class="status"><i></i> Research prototype</span>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">INTELLIGENT MICROGRAVITY FIRE INTELLIGENCE PLATFORM</p>
+        <h1>Understand fire.<br><em>Across gravity.</em></h1>
+        <p class="intro">A research workspace for spacecraft combustion data, extinction behaviour and thermal-risk indicators.</p>
+        <a class="primary" href="#datasets">Explore research datasets <b>→</b></a>
+      </div>
+      <div class="orbit-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="planet"></div><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span></div>
+    </section>
+    <section class="metrics">
+      <article><span class="metric-label">DATASETS IN CATALOG</span><strong id="dataset-count">—</strong><small>Imported JSON collections</small></article>
+      <article><span class="metric-label">REVIEW REQUIRED</span><strong id="review-count">—</strong><small>Pending source verification</small></article>
+      <article><span class="metric-label">GRAVITY CONDITIONS</span><strong id="gravity-count">—</strong><small>Represented in catalog</small></article>
+      <article><span class="metric-label">API STATUS</span><strong id="api-status">Checking</strong><small>Local research API</small></article>
+    </section>
+    <section class="section" id="datasets">
+      <div class="section-head"><div><p class="eyebrow">RESEARCH LIBRARY</p><h2>Dataset explorer</h2></div><input id="search" type="search" placeholder="Search experiments…" aria-label="Search datasets"></div>
+      <div id="dataset-list" class="dataset-grid"><div class="empty">Start the API server to load the dataset catalog.</div></div>
+    </section>
+    <section class="section parameters">
+      <p class="eyebrow">COMMON RESEARCH PARAMETERS</p><h2>One schema. Multiple environments.</h2>
+      <div class="parameter-grid">
+        <div>01 <b>Extinction velocity / limit</b></div><div>02 <b>Soot volume fraction</b></div>
+        <div>03 <b>Radiant heat flux</b></div><div>04 <b>Cool-flame dynamics</b></div>
+        <div>05 <b>Peak surface temperature</b></div><div>06 <b>Flame-spread rate</b></div>
+      </div>
+      <p class="note">Missing measurements remain explicitly missing. Microgravity results are not silently extrapolated to lunar, Martian or Earth gravity.</p>
+    </section>
+  </main>
+  <footer><span>FLARE-X · Open research foundation</span><span>Not certified for operational spacecraft safety use.</span></footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
