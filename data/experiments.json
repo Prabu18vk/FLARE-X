@@ -1,0 +1,613 @@
+{
+  "dataset_metadata": {
+    "version": "1.0.0-placeholder",
+    "status": "PLACEHOLDER SAMPLE DATA, replace with real NASA records",
+    "is_placeholder": true,
+    "total_records": 8,
+    "last_updated": "2024-10-15",
+    "curator": "FLARE-X Microgravity Research Engineering Working Group",
+    "source_archive_note": "Sample schemas modeled after NASA Physical Sciences Informatics (PSI) system and published flight experiment reports."
+  },
+  "experiments": [
+    {
+      "id": "EXP-BASS-PMMA-01",
+      "name": "BASS PMMA Flat Slab Concurrent Flame Spread",
+      "objective": "Determine the effect of low-speed concurrent forced airflow on the flame spread rate and extinction limits of thick polymethyl methacrylate (PMMA) slabs in microgravity.",
+      "platform": "ISS Microgravity Science Glovebox (MSG)",
+      "gravity_condition": "Microgravity (~10^-5 g)",
+      "material_fuel": "Polymethyl Methacrylate (PMMA, 10mm thick)",
+      "oxygen_percent": {
+        "value": 21.0,
+        "unit": "% O2 by volume",
+        "uncertainty": "±0.5%"
+      },
+      "pressure": {
+        "value": 101.3,
+        "unit": "kPa",
+        "uncertainty": "±0.2 kPa"
+      },
+      "airflow": {
+        "value": 5.0,
+        "unit": "cm/s",
+        "direction": "Concurrent forced flow",
+        "uncertainty": "±0.2 cm/s"
+      },
+      "measured_variables": [
+        {
+          "name": "Flame Spread Rate",
+          "value": 1.85,
+          "unit": "mm/s",
+          "definition": "Linear velocity of the visible pyrolysis front advancing along the cast PMMA slab surface under concurrent flow.",
+          "sensor_context": "Digital video camera at 30 fps aligned with optical measurement grid; spatial resolution 0.14 mm/pixel."
+        },
+        {
+          "name": "Flame Length",
+          "value": 34.2,
+          "unit": "mm",
+          "definition": "Tip-to-base visible luminous flame boundary measured along the centerline.",
+          "sensor_context": "Calibrated color video photogrammetry; threshold at 10% maximum intensity."
+        },
+        {
+          "name": "Peak Surface Temperature",
+          "value": 412.0,
+          "unit": "°C",
+          "definition": "Maximum solid surface temperature recorded by embedded surface thermocouples immediately prior to flame front passage.",
+          "sensor_context": "Type K micro-thermocouple (0.05 mm diameter wire) flush-mounted into the sample surface."
+        },
+        {
+          "name": "Total Radiative Heat Flux",
+          "value": 4.8,
+          "unit": "kW/m²",
+          "definition": "Peak radiant emission received at a fixed normal distance of 50 mm from the flame zone.",
+          "sensor_context": "Narrow-angle calibrated radiometer with sapphire window (0.2 to 5.0 μm band)."
+        }
+      ],
+      "timeseries_data": {
+        "time_unit": "s",
+        "series": [
+          { "time": 0, "spread_distance_mm": 0.0, "surface_temp_c": 24.0, "heat_flux_kw_m2": 0.0 },
+          { "time": 10, "spread_distance_mm": 18.2, "surface_temp_c": 210.0, "heat_flux_kw_m2": 2.1 },
+          { "time": 20, "spread_distance_mm": 37.0, "surface_temp_c": 365.0, "heat_flux_kw_m2": 4.2 },
+          { "time": 30, "spread_distance_mm": 55.4, "surface_temp_c": 412.0, "heat_flux_kw_m2": 4.8 },
+          { "time": 40, "spread_distance_mm": 73.9, "surface_temp_c": 408.0, "heat_flux_kw_m2": 4.6 },
+          { "time": 50, "spread_distance_mm": 92.5, "surface_temp_c": 410.0, "heat_flux_kw_m2": 4.7 }
+        ]
+      },
+      "data_files": [
+        {
+          "filename": "BASS_PMMA_Run04_Thermocouple_Array.csv",
+          "type": "CSV",
+          "size": "2.4 MB",
+          "description": "Multi-channel surface and gas-phase thermocouple temperature traces at 10 Hz sampling rate."
+        },
+        {
+          "filename": "BASS_PMMA_Run04_HighSpeed_Video.mp4",
+          "type": "MP4",
+          "size": "142 MB",
+          "description": "Top-down synchronized color footage of flame spread and soot deposition."
+        }
+      ],
+      "source_url": "https://doi.org/10.1016/j.proci.2014.05.089",
+      "source_document": "Olson, S. L. et al., 'Flame Spread Over Thin and Thick Fuels in Microgravity: Results from the BASS Investigation', Proc. Combust. Inst., 35(3), 2631-2638 (2015).",
+      "retrieval_date": "2024-09-12",
+      "notes": "Ignition achieved via hot Kanthal wire in contact with slab edge. Steady spread regime established after 15 seconds.",
+      "provenance_per_field": {
+        "airflow": "BASS Operations Logbook Rev C, Table 4.1, p. 42 (NASA GRC)",
+        "oxygen_percent": "MSG Life Support telemetry feed record #MSG-2013-098",
+        "pressure": "MSG Chamber barometric sensor P1",
+        "measured_variables.Flame Spread Rate": "Olson et al. (2015) Table 2, p. 2634",
+        "measured_variables.Peak Surface Temperature": "Thermocouple TC-03 primary channel data"
+      }
+    },
+    {
+      "id": "EXP-BASS-COTTON-02",
+      "name": "BASS Cotton-Fiberglass Blend Quenching and Extinction",
+      "objective": "Investigate low-speed forced flow extinction limits and flame quenching for thin cotton/fiberglass fabric samples under spacecraft-like ventilation regimes.",
+      "platform": "ISS Microgravity Science Glovebox (MSG)",
+      "gravity_condition": "Microgravity (~10^-5 g)",
+      "material_fuel": "Cotton/Fiberglass Blend (Sibal fabric, 75% cotton / 25% fiberglass)",
+      "oxygen_percent": {
+        "value": 18.0,
+        "unit": "% O2 by volume",
+        "uncertainty": "±0.4%"
+      },
+      "pressure": {
+        "value": 98.5,
+        "unit": "kPa",
+        "uncertainty": "±0.3 kPa"
+      },
+      "airflow": {
+        "value": 2.5,
+        "unit": "cm/s",
+        "direction": "Concurrent forced flow",
+        "uncertainty": "±0.2 cm/s"
+      },
+      "measured_variables": [
+        {
+          "name": "Flame Spread Rate",
+          "value": 2.40,
+          "unit": "mm/s",
+          "definition": "Velocity of the leading flame pyrolysis zone on thermally thin fabric prior to quenching.",
+          "sensor_context": "Digital video camera at 30 fps; edge detection tracking algorithm."
+        },
+        {
+          "name": "Quenching Distance",
+          "value": 6.8,
+          "unit": "mm",
+          "definition": "Minimum stand-off distance between glowing char boundary and metallic holder edge at flame extinction.",
+          "sensor_context": "High-magnification macro lens video imagery; calibrated against holder markings."
+        },
+        {
+          "name": "Extinction Velocity",
+          "value": 1.1,
+          "unit": "cm/s",
+          "definition": "Critical minimum concurrent airflow below which the flame fails to sustain combustion and self-extinguishes.",
+          "sensor_context": "Hot-wire anemometer duct probe calibrated to ±0.1 cm/s."
+        }
+      ],
+      "timeseries_data": {
+        "time_unit": "s",
+        "series": [
+          { "time": 0, "spread_distance_mm": 0.0, "surface_temp_c": 22.0, "heat_flux_kw_m2": 0.0 },
+          { "time": 8, "spread_distance_mm": 19.1, "surface_temp_c": 310.0, "heat_flux_kw_m2": 3.4 },
+          { "time": 16, "spread_distance_mm": 38.3, "surface_temp_c": 345.0, "heat_flux_kw_m2": 3.6 },
+          { "time": 24, "spread_distance_mm": 57.6, "surface_temp_c": 280.0, "heat_flux_kw_m2": 2.1 },
+          { "time": 30, "spread_distance_mm": 64.2, "surface_temp_c": 140.0, "heat_flux_kw_m2": 0.4 }
+        ]
+      },
+      "data_files": [
+        {
+          "filename": "BASS_Cotton_Run12_Extinction_Log.csv",
+          "type": "CSV",
+          "size": "1.1 MB",
+          "description": "Flow speed step-down log and optical emission sensor values up to extinction event."
+        }
+      ],
+      "source_url": "https://doi.org/10.1016/j.combustflame.2016.03.011",
+      "source_document": "Ferkul, P. V. and Olson, S. L., 'Extinction of Flame Spread Over Fabric Samples in Microgravity', Combustion and Flame, 166, 120-128 (2016).",
+      "retrieval_date": "2024-09-15",
+      "notes": "Hypoxic atmosphere (18% O2) simulated exploration atmosphere regime. Flame suffered radiative extinction when flow dropped below 1.2 cm/s.",
+      "provenance_per_field": {
+        "airflow": "MSG duct flow calibrated controller setting F-02",
+        "oxygen_percent": "Chamber mass spectrometer oxygen partial pressure log",
+        "pressure": "MSG ambient transducer PT-101",
+        "measured_variables.Extinction Velocity": "Ferkul & Olson (2016) Section 3.2, p. 124"
+      }
+    },
+    {
+      "id": "EXP-ACME-CIR-01",
+      "name": "ACME Methane Gaseous Diffusion Laminar Flame",
+      "objective": "Characterize soot inception, radiative extinction limits, and flame geometry for spherical/cylindrical laminar methane diffusion flames in microgravity.",
+      "platform": "ISS Combustion Integrated Rack (CIR)",
+      "gravity_condition": "Microgravity (~10^-6 g)",
+      "material_fuel": "Methane (CH4 gaseous diffusion burner)",
+      "oxygen_percent": {
+        "value": 30.0,
+        "unit": "% O2 by volume",
+        "uncertainty": "±0.2%"
+      },
+      "pressure": {
+        "value": 100.0,
+        "unit": "kPa",
+        "uncertainty": "±0.1 kPa"
+      },
+      "airflow": {
+        "value": 0.0,
+        "unit": "cm/s",
+        "direction": "Quiescent (no forced flow)",
+        "uncertainty": "±0.05 cm/s"
+      },
+      "measured_variables": [
+        {
+          "name": "Flame Width",
+          "value": 26.4,
+          "unit": "mm",
+          "definition": "Maximum transverse visible flame boundary diameter in quiescent microgravity environment.",
+          "sensor_context": "Orthogonal calibrated CCD cameras; 1024x1024 pixel array with narrowband CH* chemiluminescence filter (430 nm)."
+        },
+        {
+          "name": "Radiative Extinction Limit",
+          "value": 14.8,
+          "unit": "mg/s",
+          "definition": "Minimum fuel mass flow rate at which flame self-extinguishes due to radiative heat loss exceeding chemical heat release.",
+          "sensor_context": "Thermal mass flow meter MFM-01 with 0.1 mg/s precision."
+        },
+        {
+          "name": "Soot Volume Fraction",
+          "value": 2.8,
+          "unit": "ppm",
+          "definition": "Peak optical volume fraction of carbonaceous particulate soot within the annular luminous zone.",
+          "sensor_context": "Line-of-sight laser extinction measurement at 632.8 nm (He-Ne)."
+        }
+      ],
+      "timeseries_data": {
+        "time_unit": "s",
+        "series": [
+          { "time": 0, "fuel_flow_mg_s": 25.0, "soot_ppm": 0.1, "radiant_output_w": 0.2 },
+          { "time": 15, "fuel_flow_mg_s": 25.0, "soot_ppm": 2.7, "radiant_output_w": 3.8 },
+          { "time": 30, "fuel_flow_mg_s": 20.0, "soot_ppm": 2.4, "radiant_output_w": 3.1 },
+          { "time": 45, "fuel_flow_mg_s": 16.0, "soot_ppm": 1.8, "radiant_output_w": 2.4 },
+          { "time": 60, "fuel_flow_mg_s": 14.5, "soot_ppm": 0.0, "radiant_output_w": 0.0 }
+        ]
+      },
+      "data_files": [
+        {
+          "filename": "ACME_CIR_Run201_Soot_Spectroscopy.h5",
+          "type": "HDF5",
+          "size": "8.7 MB",
+          "description": "Multi-angle laser extinction and chemiluminescence emission spectral matrices."
+        }
+      ],
+      "source_url": "https://doi.org/10.1016/j.combustflame.2019.04.015",
+      "source_document": "Sunderland, P. B. et al., 'Structure and Extinction of Nonpremixed Methane Flames in Microgravity', Combustion and Flame, 206, 11-21 (2019).",
+      "retrieval_date": "2024-09-20",
+      "notes": "Absence of buoyant acceleration results in spherical flame morphology and significantly extended residence times compared to terrestrial 1g burners.",
+      "provenance_per_field": {
+        "airflow": "CIR sealed combustion chamber quiescent mode",
+        "oxygen_percent": "Gas Delivery System mass flow mixer log #GDS-092",
+        "pressure": "CIR chamber absolute pressure transducer PT-CIR-01",
+        "measured_variables.Soot Volume Fraction": "Sunderland et al. (2019) Figure 6, p. 16"
+      }
+    },
+    {
+      "id": "EXP-ACME-CIR-02",
+      "name": "ACME Ethylene Flame Soot and Radiation Dynamics",
+      "objective": "Quantify soot generation rates and radiative heat loss fractions for ethylene flames under variable oxygen enrichment in microgravity.",
+      "platform": "ISS Combustion Integrated Rack (CIR)",
+      "gravity_condition": "Microgravity (~10^-6 g)",
+      "material_fuel": "Ethylene (C2H4 gaseous fuel)",
+      "oxygen_percent": {
+        "value": 40.0,
+        "unit": "% O2 by volume",
+        "uncertainty": "±0.3%"
+      },
+      "pressure": {
+        "value": 100.0,
+        "unit": "kPa",
+        "uncertainty": "±0.1 kPa"
+      },
+      "airflow": {
+        "value": 0.0,
+        "unit": "cm/s",
+        "direction": "Quiescent",
+        "uncertainty": "±0.05 cm/s"
+      },
+      "measured_variables": [
+        {
+          "name": "Soot Volume Fraction",
+          "value": 7.4,
+          "unit": "ppm",
+          "definition": "Maximum local concentration of particulate soot in the luminous flame sheet.",
+          "sensor_context": "Planar laser-induced incandescence (LII) calibrated with multi-wavelength extinction."
+        },
+        {
+          "name": "Radiative Fraction",
+          "value": 0.46,
+          "unit": "dimensionless (ratio)",
+          "definition": "Fraction of total chemical heat release lost from the flame via electromagnetic thermal radiation.",
+          "sensor_context": "Dual broad-band thermopile radiometers positioned at 45° and 90° azimuth."
+        },
+        {
+          "name": "Peak Flame Temperature",
+          "value": 1840.0,
+          "unit": "°C",
+          "definition": "Maximum corrected gas temperature within the reaction sheet.",
+          "sensor_context": "Two-color optical pyrometry verified by radiation-corrected Pt/Rh thermocouple."
+        }
+      ],
+      "timeseries_data": {
+        "time_unit": "s",
+        "series": [
+          { "time": 0, "soot_ppm": 0.0, "rad_fraction": 0.0, "temp_c": 25.0 },
+          { "time": 10, "soot_ppm": 5.1, "rad_fraction": 0.38, "temp_c": 1620.0 },
+          { "time": 20, "soot_ppm": 7.4, "rad_fraction": 0.46, "temp_c": 1840.0 },
+          { "time": 30, "soot_ppm": 7.2, "rad_fraction": 0.45, "temp_c": 1810.0 }
+        ]
+      },
+      "data_files": [
+        {
+          "filename": "ACME_C2H4_Radiation_Run08.csv",
+          "type": "CSV",
+          "size": "3.2 MB",
+          "description": "Radiometer thermopile microvolt signals and computed heat flux."
+        }
+      ],
+      "source_url": "https://doi.org/10.1016/j.proci.2020.06.182",
+      "source_document": "Urban, D. L. et al., 'Radiation and Soot Processes in Microgravity Nonpremixed Ethylene Flames', Proc. Combust. Inst., 38(3), 4785-4793 (2021).",
+      "retrieval_date": "2024-09-22",
+      "notes": "High soot yield observed due to lengthened microgravity diffusion residence time without buoyant purging.",
+      "provenance_per_field": {
+        "airflow": "CIR quiescent test chamber specification",
+        "oxygen_percent": "Chamber O2 analyzer sensor OA-04",
+        "pressure": "Transducer PT-CIR-01",
+        "measured_variables.Radiative Fraction": "Urban et al. (2021) Table 1, p. 4788"
+      }
+    },
+    {
+      "id": "EXP-SAFFIRE-I-01",
+      "name": "Saffire-I Large-Scale Sibal Fabric Flame Spread",
+      "objective": "Conduct the first realistic-scale fire safety experiment in an uncrewed space vehicle, measuring flame growth and spread rate over large cotton-fiberglass fabric panels.",
+      "platform": "Cygnus Spacecraft (Saffire Flow Duct, post-departure from ISS)",
+      "gravity_condition": "Microgravity (~10^-4 g)",
+      "material_fuel": "Cotton/Fiberglass Blend (Sibal fabric, 0.4m x 1.0m sheet)",
+      "oxygen_percent": {
+        "value": 21.0,
+        "unit": "% O2 by volume",
+        "uncertainty": "±0.5%"
+      },
+      "pressure": {
+        "value": 100.5,
+        "unit": "kPa",
+        "uncertainty": "±0.5 kPa"
+      },
+      "airflow": {
+        "value": 20.0,
+        "unit": "cm/s",
+        "direction": "Concurrent forced flow (fans)",
+        "uncertainty": "±1.0 cm/s"
+      },
+      "measured_variables": [
+        {
+          "name": "Flame Spread Rate",
+          "value": 5.20,
+          "unit": "mm/s",
+          "definition": "Average velocity of flame front propagation across the large 1.0 m panel.",
+          "sensor_context": "Synchronized camera array; optical flow tracking and thermocouple arrival time triangulation."
+        },
+        {
+          "name": "Maximum Radiant Heat Flux",
+          "value": 11.4,
+          "unit": "kW/m²",
+          "definition": "Peak radiant emission detected at duct wall during full panel involvement.",
+          "sensor_context": "Schmidt-Boelter heat flux gauge mounted flush in duct upper plate."
+        },
+        {
+          "name": "Oxygen Depletion Rate",
+          "value": 0.18,
+          "unit": "%/min",
+          "definition": "Rate of atmospheric oxygen consumption measured in vehicle cabin during burn period.",
+          "sensor_context": "Cygnus vehicle life-support electrochemical O2 sensor suite."
+        }
+      ],
+      "timeseries_data": {
+        "time_unit": "s",
+        "series": [
+          { "time": 0, "spread_distance_mm": 0.0, "flame_temp_c": 25.0, "flux_kw_m2": 0.1 },
+          { "time": 30, "spread_distance_mm": 156.0, "flame_temp_c": 540.0, "flux_kw_m2": 4.8 },
+          { "time": 60, "spread_distance_mm": 312.0, "flame_temp_c": 710.0, "flux_kw_m2": 8.9 },
+          { "time": 90, "spread_distance_mm": 468.0, "flame_temp_c": 780.0, "flux_kw_m2": 11.4 },
+          { "time": 120, "spread_distance_mm": 624.0, "flame_temp_c": 760.0, "flux_kw_m2": 10.9 }
+        ]
+      },
+      "data_files": [
+        {
+          "filename": "Saffire_I_Telemetry_Run01.csv",
+          "type": "CSV",
+          "size": "15.4 MB",
+          "description": "Full Cygnus cabin pressure, airflow fan RPM, 24 thermocouple channels, and radiometers."
+        }
+      ],
+      "source_url": "https://doi.org/10.1016/j.proci.2018.06.196",
+      "source_document": "Urban, D. L. et al., 'The Spacecraft Fire Experiment: Saffire-I and Saffire-II Results', Proc. Combust. Inst., 37(3), 4153-4160 (2019).",
+      "retrieval_date": "2024-09-25",
+      "notes": "Large flame grew in a continuous triangular shape; burning sustained without self-extinguishing throughout the test window.",
+      "provenance_per_field": {
+        "airflow": "Saffire flow duct calibrated fan tachometer and differential pressure matrix",
+        "oxygen_percent": "Pre-departure Cygnus cabin gas analysis log",
+        "pressure": "Cygnus internal barometric sensor suite",
+        "measured_variables.Flame Spread Rate": "Urban et al. (2019) Figure 4, p. 4156"
+      }
+    },
+    {
+      "id": "EXP-SAFFIRE-II-02",
+      "name": "Saffire-II Multi-Material Sample Array Combustion",
+      "objective": "Determine maximum burning rate and smoke generation for nine distinct spacecraft engineering plastic samples in low-speed flow in microgravity.",
+      "platform": "Cygnus Spacecraft (Saffire Flow Duct, post-departure)",
+      "gravity_condition": "Microgravity (~10^-4 g)",
+      "material_fuel": "Polymethyl Methacrylate (PMMA, 50mm x 300mm strip)",
+      "oxygen_percent": {
+        "value": 21.0,
+        "unit": "% O2 by volume",
+        "uncertainty": "±0.5%"
+      },
+      "pressure": {
+        "value": 99.8,
+        "unit": "kPa",
+        "uncertainty": "±0.4 kPa"
+      },
+      "airflow": {
+        "value": 15.0,
+        "unit": "cm/s",
+        "direction": "Concurrent forced flow",
+        "uncertainty": "±0.8 cm/s"
+      },
+      "measured_variables": [
+        {
+          "name": "Flame Spread Rate",
+          "value": 3.10,
+          "unit": "mm/s",
+          "definition": "Steady-state flame front velocity along PMMA strip.",
+          "sensor_context": "Calibrated optical camera and photodiode arrival array."
+        },
+        {
+          "name": "Smoke Optical Density",
+          "value": 0.82,
+          "unit": "1/m",
+          "definition": "Attenuation coefficient of smoke obscuration measured downstream of the combustion zone.",
+          "sensor_context": "Near-IR obscuration beam smoke meter at 880 nm."
+        },
+        {
+          "name": "Peak Surface Temperature",
+          "value": 435.0,
+          "unit": "°C",
+          "definition": "Maximum pyrolysis temperature of solid fuel before vaporization.",
+          "sensor_context": "Thermocouple TC-PMMA-02 embedded 0.5 mm beneath sample surface."
+        }
+      ],
+      "timeseries_data": {
+        "time_unit": "s",
+        "series": [
+          { "time": 0, "spread_distance_mm": 0.0, "smoke_od": 0.0, "temp_c": 24.0 },
+          { "time": 20, "spread_distance_mm": 62.0, "smoke_od": 0.35, "temp_c": 310.0 },
+          { "time": 40, "spread_distance_mm": 124.0, "smoke_od": 0.78, "temp_c": 420.0 },
+          { "time": 60, "spread_distance_mm": 186.0, "smoke_od": 0.82, "temp_c": 435.0 }
+        ]
+      },
+      "data_files": [
+        {
+          "filename": "Saffire_II_Sample04_PMMA_Trace.csv",
+          "type": "CSV",
+          "size": "5.6 MB",
+          "description": "Video photodiode synchronization and smoke obscuration sensor time trace."
+        }
+      ],
+      "source_url": "https://doi.org/10.1016/j.proci.2018.06.196",
+      "source_document": "Urban, D. L. et al., 'The Spacecraft Fire Experiment: Saffire-I and Saffire-II Results', Proc. Combust. Inst., 37(3), 4153-4160 (2019).",
+      "retrieval_date": "2024-09-25",
+      "notes": "PMMA sample showed steady bubbling and vigorous jetting at 15 cm/s concurrent flow.",
+      "provenance_per_field": {
+        "airflow": "Saffire airflow subassembly calibrated flow meter",
+        "oxygen_percent": "Vehicle cabin atmosphere monitor log",
+        "pressure": "Cygnus vehicle pressure telemetry",
+        "measured_variables.Smoke Optical Density": "Saffire obscurometer log channel OD-1"
+      }
+    },
+    {
+      "id": "EXP-FLEX-CIR-01",
+      "name": "FLEX Isolated Droplet Combustion and Cool Flame Extinction",
+      "objective": "Observe spherical burning, radiative extinction, and low-temperature 'cool flame' quasi-steady burning of isolated alkane fuel droplets in microgravity.",
+      "platform": "ISS Combustion Integrated Rack (CIR)",
+      "gravity_condition": "Microgravity (~10^-6 g)",
+      "material_fuel": "n-Heptane Droplet (initial diameter 2.8 mm, SiC fiber suspension)",
+      "oxygen_percent": {
+        "value": 21.0,
+        "unit": "% O2 by volume",
+        "uncertainty": "±0.3%"
+      },
+      "pressure": {
+        "value": 101.3,
+        "unit": "kPa",
+        "uncertainty": "±0.1 kPa"
+      },
+      "airflow": {
+        "value": 0.0,
+        "unit": "cm/s",
+        "direction": "Quiescent",
+        "uncertainty": "±0.05 cm/s"
+      },
+      "measured_variables": [
+        {
+          "name": "Burning Rate Constant",
+          "value": 0.58,
+          "unit": "mm²/s",
+          "definition": "d²-law evaporation and consumption rate slope constant: -d(D²)/dt during the hot flame phase.",
+          "sensor_context": "High-magnification backlit silhouette shadowgraphy at 100 fps."
+        },
+        {
+          "name": "Extinction Diameter",
+          "value": 1.42,
+          "unit": "mm",
+          "definition": "Droplet diameter at the moment the visible hot luminous flame extinguishes and cool flame begins.",
+          "sensor_context": "Shadowgraphy camera paired with UV/visible ICCD camera."
+        },
+        {
+          "name": "Cool Flame Duration",
+          "value": 14.5,
+          "unit": "s",
+          "definition": "Elapsed time during which droplet continues invisible low-temperature combustion prior to final extinction.",
+          "sensor_context": "Broadband radiometer in the 2.5-3.5 μm infrared band."
+        }
+      ],
+      "timeseries_data": {
+        "time_unit": "s",
+        "series": [
+          { "time": 0, "d_squared_mm2": 7.84, "emission_uv": 0.0, "rad_ir_w": 0.0 },
+          { "time": 2, "d_squared_mm2": 6.68, "emission_uv": 4.2, "rad_ir_w": 2.1 },
+          { "time": 4, "d_squared_mm2": 5.52, "emission_uv": 4.1, "rad_ir_w": 2.2 },
+          { "time": 6, "d_squared_mm2": 4.36, "emission_uv": 3.9, "rad_ir_w": 2.0 },
+          { "time": 7.5, "d_squared_mm2": 3.49, "emission_uv": 0.1, "rad_ir_w": 0.6 },
+          { "time": 15, "d_squared_mm2": 1.25, "emission_uv": 0.0, "rad_ir_w": 0.5 },
+          { "time": 22, "d_squared_mm2": 0.00, "emission_uv": 0.0, "rad_ir_w": 0.0 }
+        ]
+      },
+      "data_files": [
+        {
+          "filename": "FLEX_Heptane_CIR_Drop21_Shadowgraph.csv",
+          "type": "CSV",
+          "size": "4.1 MB",
+          "description": "Droplet diameter squared time series extracted via automated ellipse fitting."
+        }
+      ],
+      "source_url": "https://doi.org/10.1016/j.combustflame.2014.07.021",
+      "source_document": "Nayagam, V. et al., 'Warm and Cool Flame Droplet Extinction in Microgravity', Combustion and Flame, 162(5), 2140-2147 (2015).",
+      "retrieval_date": "2024-09-28",
+      "notes": "Discovery of two-stage combustion in microgravity where hot flame radiative extinction triggers prolonged cool-flame consumption regime.",
+      "provenance_per_field": {
+        "airflow": "CIR quiescent chamber chamber log #FLEX-014",
+        "oxygen_percent": "Chamber gas mixture mass spectrometry",
+        "pressure": "CIR high-precision absolute pressure transducer",
+        "measured_variables.Burning Rate Constant": "Nayagam et al. (2015) Table 1, p. 2143"
+      }
+    },
+    {
+      "id": "EXP-SLICES-MSG-01",
+      "name": "SLICES Cylindrical HDPE Rod Concurrent Flame Spread",
+      "objective": "Examine the influence of low-speed concurrent flow on flame spread along solid cylindrical thermoplastic fuel rods in microgravity.",
+      "platform": "ISS Microgravity Science Glovebox (MSG)",
+      "gravity_condition": "Microgravity (~10^-5 g)",
+      "material_fuel": "High-Density Polyethylene (HDPE, 6.35mm diameter rod)",
+      "oxygen_percent": {
+        "value": 21.0,
+        "unit": "% O2 by volume",
+        "uncertainty": "±0.5%"
+      },
+      "pressure": {
+        "value": null,
+        "unit": null,
+        "uncertainty": null
+      },
+      "airflow": {
+        "value": 10.0,
+        "unit": "cm/s",
+        "direction": "Concurrent forced flow",
+        "uncertainty": "±0.5 cm/s"
+      },
+      "measured_variables": [
+        {
+          "name": "Flame Spread Rate",
+          "value": 1.25,
+          "unit": "mm/s",
+          "definition": "Axial regression velocity of the melting and burning front along the HDPE cylinder.",
+          "sensor_context": "Digital video camera; frame-by-frame front tracking."
+        },
+        {
+          "name": "Molten Receding Length",
+          "value": null,
+          "unit": null,
+          "definition": null,
+          "sensor_context": null
+        }
+      ],
+      "timeseries_data": {
+        "time_unit": "s",
+        "series": [
+          { "time": 0, "spread_distance_mm": 0.0 },
+          { "time": 20, "spread_distance_mm": 25.0 },
+          { "time": 40, "spread_distance_mm": 50.0 },
+          { "time": 60, "spread_distance_mm": 75.0 }
+        ]
+      },
+      "data_files": [],
+      "source_url": "https://doi.org/10.2514/6.2017-3852",
+      "source_document": "Bhattacharjee, S. et al., 'Concurrent Flame Spread Over Thick Cylindrical Fuels in Microgravity', AIAA Propulsion and Energy Forum, AIAA 2017-3852 (2017).",
+      "retrieval_date": "2024-10-02",
+      "notes": "Molten polymer beading observed at flame trailing edge due to surface tension in microgravity.",
+      "provenance_per_field": {
+        "airflow": "SLICES wind tunnel fan anemometer setting",
+        "oxygen_percent": "MSG oxygen telemetry sensor",
+        "pressure": null,
+        "measured_variables.Flame Spread Rate": "Bhattacharjee et al. (2017) Figure 8, p. 7"
+      }
+    }
+  ]
+}

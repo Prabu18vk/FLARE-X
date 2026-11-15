@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLARE-X | Intelligent Microgravity Fire Intelligence Platform</title>
+  <meta name="description" content="Research decision-support dashboard for NASA microgravity combustion research, spacecraft fire safety engineering, and mission planning.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/visualizations.css">
+</head>
+<body>
+
+  <!-- Persistent Warning / Notice Banner -->
+  <div id="app-disclaimer-banner" class="disclaimer-banner">
+    <!-- Populated dynamically by App -->
+  </div>
+
+  <!-- Top Mission-Control Header -->
+  <header class="app-header">
+    <a href="#home" class="header-brand" data-nav-target="home">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>FLARE<span class="brand-x">-X</span></h1>
+        <div class="brand-tagline">Microgravity Fire Intelligence Platform</div>
+      </div>
+    </a>
+
+    <div class="header-telemetry">
+      <div id="header-dataset-pill" class="telemetry-pill">
+        <span class="indicator-dot"></span> INITIALIZING...
+      </div>
+      <div class="telemetry-pill" style="border-color: rgba(245, 158, 11, 0.4); color: #fbbf24;">
+        <span>DECISION-SUPPORT: NOT CERTIFIED</span>
+      </div>
+    </div>
+
+    <div class="header-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="global-search-input" placeholder="Quick query (Press Enter to search)..." aria-label="Quick search">
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside class="app-sidebar">
+      <div>
+        <div class="nav-section-title">Command Navigation</div>
+        <nav class="nav-group">
+          <a href="#home" class="nav-item active" data-nav-target="home">
+            <span class="nav-icon">🪐</span>
+            <span>Platform Overview</span>
+          </a>
+          <a href="#library" class="nav-item" data-nav-target="library">
+            <span class="nav-icon">🔬</span>
+            <span>Experiment Library</span>
+            <span class="nav-badge p0">P0</span>
+          </a>
+          <a href="#comparison" class="nav-item" data-nav-target="comparison">
+            <span class="nav-icon">⚖️</span>
+            <span>Comparison Lab</span>
+            <span class="nav-badge p0">P0</span>
+          </a>
+          <a href="#assistant" class="nav-item" data-nav-target="assistant">
+            <span class="nav-icon">🤖</span>
+            <span>Research Assistant</span>
+            <span class="nav-badge p0">P0</span>
+          </a>
+          <a href="#graph" class="nav-item" data-nav-target="graph">
+            <span class="nav-icon">🕸️</span>
+            <span>Knowledge Graph</span>
+            <span class="nav-badge p1">P1</span>
+          </a>
+          <a href="#gap-matrix" class="nav-item" data-nav-target="gap-matrix">
+            <span class="nav-icon">📊</span>
+            <span>Research Gap Matrix</span>
+            <span class="nav-badge p1">P1</span>
+          </a>
+          <a href="#prediction" class="nav-item" data-nav-target="prediction">
+            <span class="nav-icon">📈</span>
+            <span>Prediction Explorer</span>
+            <span class="nav-badge p2">P2</span>
+          </a>
+        </nav>
+
+        <div class="nav-section-title">Data & Traceability</div>
+        <nav class="nav-group">
+          <a href="#import-data" class="nav-item" data-nav-target="import-data">
+            <span class="nav-icon">📥</span>
+            <span>Data Ingestion & Import</span>
+          </a>
+          <a href="#about" class="nav-item" data-nav-target="about">
+            <span class="nav-icon">🛡️</span>
+            <span>About & Guardrails</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- System Status Widget -->
+      <div class="sidebar-system-box">
+        <div class="system-status-header">
+          <span>OPERATIONAL MODE</span>
+          <span style="color: #34d399; font-family: var(--font-mono); font-size: 0.7rem;">RESEARCH</span>
+        </div>
+        <div class="system-status-body">
+          Scientific decision-support system. All conclusions and values are grounded in indexed archival literature.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Command Workspace -->
+    <main class="app-main">
+
+      <!-- ==============================================
+           PAGE: HOME / OVERVIEW (VISUAL ANALYTICS DASHBOARD)
+      =============================================== -->
+      <section id="page-home" class="page-view active">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>FLARE-X Mission Telemetry &amp; Analytics Dashboard</h2>
+            <p class="page-subtitle">Real-time visual telemetry, environmental envelopes, and cross-study combustion kinetics across all indexed microgravity experiments.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-primary btn-sm" onclick="app.navigateTo('library')">🔬 Open Experiment Library →</button>
+            <button class="btn btn-secondary btn-sm" onclick="app.navigateTo('comparison')">⚖️ Comparison Lab</button>
+            <button class="btn btn-secondary btn-sm" onclick="app.navigateTo('assistant')">🤖 Research Assistant</button>
+          </div>
+        </div>
+
+        <!-- Telemetry Metrics Banner (Interactive Drill-Down) -->
+        <div class="metrics-row">
+          <div class="metric-card accent-cyan interactive" onclick="app.openMetricDrillDown('experiments')" title="Click to inspect all flight records">
+            <div class="metric-title">Indexed Flight Records</div>
+            <div id="stat-total-experiments" class="metric-value">8</div>
+            <div class="metric-sub">BASS, CIR, Saffire, FLEX, SLICES</div>
+            <div class="interactive-hint"><span>🔍 Click to inspect records →</span></div>
+          </div>
+          <div class="metric-card accent-orange interactive" onclick="app.openMetricDrillDown('platforms')" title="Click to view research platforms">
+            <div class="metric-title">Microgravity Platforms</div>
+            <div id="stat-total-platforms" class="metric-value">3</div>
+            <div class="metric-sub">ISS MSG, ISS CIR, Cygnus Cargo Bay</div>
+            <div class="interactive-hint"><span>🛰️ Click to explore platforms →</span></div>
+          </div>
+          <div class="metric-card accent-green interactive" onclick="app.openMetricDrillDown('publications')" title="Click to view publication sources">
+            <div class="metric-title">Archival Publications</div>
+            <div id="stat-total-documents" class="metric-value">6</div>
+            <div class="metric-sub">Peer-reviewed journals &amp; NTRS reports</div>
+            <div class="interactive-hint"><span>📄 Click to inspect sources →</span></div>
+          </div>
+          <div class="metric-card accent-purple interactive" onclick="app.openMetricDrillDown('variables')" title="Click to view all measured variables">
+            <div class="metric-title">Cataloged Variables</div>
+            <div id="stat-total-variables" class="metric-value">22</div>
+            <div class="metric-sub">With verified units &amp; sensor optics</div>
+            <div class="interactive-hint"><span>📊 Click to inspect variables →</span></div>
+          </div>
+        </div>
+
+        <!-- Compact Search & Filter Strip -->
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 12px 18px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 280px;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-cyan);">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="home-search-input" placeholder="Quick filter across fuels, platforms, and variables (e.g. PMMA, Sibal, Soot, Saffire)..." style="width: 100%; background: transparent; border: none; color: #fff; font-size: 0.85rem; outline: none;" onkeydown="if(event.key==='Enter'){ document.getElementById('global-search-input').value = this.value; app.navigateTo('library'); document.getElementById('lib-search-input').value = this.value; document.getElementById('lib-search-input').dispatchEvent(new Event('input')); }">
+          </div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <span class="filter-chip" onclick="document.getElementById('home-search-input').value='PMMA'; document.getElementById('global-search-input').value='PMMA'; app.navigateTo('library'); document.getElementById('lib-search-input').value='PMMA'; document.getElementById('lib-search-input').dispatchEvent(new Event('input'));">PMMA</span>
+            <span class="filter-chip" onclick="document.getElementById('home-search-input').value='Sibal'; document.getElementById('global-search-input').value='Sibal'; app.navigateTo('library'); document.getElementById('lib-search-input').value='Sibal'; document.getElementById('lib-search-input').dispatchEvent(new Event('input'));">Sibal Fabric</span>
+            <span class="filter-chip" onclick="document.getElementById('home-search-input').value='Soot'; document.getElementById('global-search-input').value='Soot'; app.navigateTo('library'); document.getElementById('lib-search-input').value='Soot'; document.getElementById('lib-search-input').dispatchEvent(new Event('input'));">Soot &amp; Radiation</span>
+            <span class="filter-chip" onclick="document.getElementById('home-search-input').value='Saffire'; document.getElementById('global-search-input').value='Saffire'; app.navigateTo('library'); document.getElementById('lib-search-input').value='Saffire'; document.getElementById('lib-search-input').dispatchEvent(new Event('input'));">Cygnus Saffire</span>
+            <span class="filter-chip" onclick="document.getElementById('home-search-input').value='Cool Flame'; document.getElementById('global-search-input').value='Cool Flame'; app.navigateTo('library'); document.getElementById('lib-search-input').value='Cool Flame'; document.getElementById('lib-search-input').dispatchEvent(new Event('input'));">Cool Flame</span>
+          </div>
+        </div>
+
+        <!-- Visual Analytics Row 1: Distribution Breakdowns (Donut Charts) -->
+        <div class="dashboard-grid-2col">
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dashboard-card-title">🧪 Fuel &amp; Material Allocation</span>
+              <span class="dashboard-card-sub">Categorized by chemical and physical form</span>
+            </div>
+            <div id="dash-donut-materials" style="height: 260px;"></div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <span class="dashboard-card-title">🛰️ Microgravity Research Platforms</span>
+              <div class="dashboard-card-sub">Flight facility allocation across tests</div>
+            </div>
+            <div id="dash-donut-platforms" style="height: 260px;"></div>
+          </div>
+        </div>
+
+        <!-- Visual Analytics Row 2: 2D Operational Environmental Parameter Space (O2 vs Airflow) -->
+        <div class="dashboard-card" style="margin-bottom: 24px;">
+          <div class="dashboard-card-header">
+            <div>
+              <span class="dashboard-card-title">🌐 Environmental Parameter Space Map</span>
+              <span class="dashboard-card-sub">Interactive 2D distribution of all indexed flight experiments: Oxygen Concentration vs Forced Airflow</span>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono);">
+              Click any node to inspect experiment dossier
+            </div>
+          </div>
+          <div id="dash-scatter-envelope" style="height: 300px;"></div>
+        </div>
+
+        <!-- Visual Analytics Row 3: Combustion Kinetics Benchmarks & Burn Trajectories -->
+        <div class="dashboard-grid-2col">
+          <!-- Cross-Study Flame Spread & Combustion Rate Benchmark -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <div>
+                <span class="dashboard-card-title">🔥 Cross-Study Measured Combustion Kinetics</span>
+                <span class="dashboard-card-sub">Measured flame spread rates, extinction thresholds, and soot optical densities</span>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="app.navigateTo('comparison')">Harmonize in Lab →</button>
+            </div>
+            <div id="dash-horizontal-benchmarks" style="overflow-y: auto; max-height: 340px;"></div>
+          </div>
+
+          <!-- Multi-Platform Flame Front Spread Trajectories -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <div>
+                <span class="dashboard-card-title">📈 Flame Spread Trajectories (Time-Series)</span>
+                <span class="dashboard-card-sub">Flame front position (mm) vs elapsed burn time (s) across solid materials</span>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="app.navigateTo('comparison')">Compare Curves →</button>
+            </div>
+            <div id="dash-timeseries-trajectories" style="height: 340px;"></div>
+          </div>
+        </div>
+
+        <!-- Visual Analytics Row 4: Research Gap Matrix Radar & Live Telemetry Stream -->
+        <div class="dashboard-grid-2col">
+          <!-- Research Gap Coverage Mini Matrix -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <div>
+                <span class="dashboard-card-title">📊 Collection Coverage Radar</span>
+                <span class="dashboard-card-sub">Tested regimes vs unindexed domains in active collection</span>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="app.navigateTo('gap-matrix')">Open Full Matrix →</button>
+            </div>
+            <div id="dash-mini-gap-grid" style="display: flex; flex-direction: column; gap: 8px;"></div>
+          </div>
+
+          <!-- Knowledge Topology Summary -->
+          <div class="dashboard-card">
+            <div class="dashboard-card-header">
+              <div>
+                <span class="dashboard-card-title">🕸️ Topological Network Connectivity</span>
+                <span class="dashboard-card-sub">Scientific entity connections and verified edge source citations</span>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="app.navigateTo('graph')">Explore Graph →</button>
+            </div>
+            <div id="dash-topology-summary" style="display: flex; flex-direction: column; gap: 10px;"></div>
+          </div>
+        </div>
+
+        <!-- Visual Analytics Row 5: Live Flight Telemetry Stream (Visual HUD Cards) -->
+        <div style="margin-top: 10px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+            <h3 style="font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 8px;">
+              <span>📡</span> Microgravity Flight Experiment Telemetry Stream
+            </h3>
+            <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">
+              Showing all 8 indexed flight experiments
+            </span>
+          </div>
+
+          <div id="dash-experiments-stream" class="experiment-grid">
+            <!-- Populated dynamically with visual gauge bars -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE: EXPERIMENT LIBRARY (P0)
+      =============================================== -->
+      <section id="page-library" class="page-view">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>Microgravity Experiment Library <span class="nav-badge p0" style="font-size: 0.75rem;">P0</span></h2>
+            <p class="page-subtitle">Search, filter, and inspect verified NASA flight experiments, glovebox burns, and combustion rack datasets.</p>
+          </div>
+          <div class="page-actions">
+            <span id="lib-results-count" class="telemetry-pill">8 records displayed</span>
+          </div>
+        </div>
+
+        <!-- Filter Toolbar -->
+        <div class="filter-toolbar">
+          <div class="filter-row-top">
+            <div class="filter-search-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="lib-search-input" placeholder="Search by name, ID, objective, material, platform, or notes...">
+            </div>
+            <button class="btn btn-outline btn-sm" id="lib-reset-filters-btn">Clear Filters</button>
+          </div>
+
+          <div class="filter-row-selects">
+            <select id="lib-filter-material" class="filter-select">
+              <option value="all">Material / Fuel: All</option>
+            </select>
+            <select id="lib-filter-platform" class="filter-select">
+              <option value="all">Platform: All</option>
+            </select>
+            <select id="lib-filter-gravity" class="filter-select">
+              <option value="all">Gravity Condition: All</option>
+            </select>
+            <select id="lib-filter-measurement" class="filter-select">
+              <option value="all">Measurement Type: All</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Experiments Grid -->
+        <div id="lib-experiments-grid" class="experiment-grid">
+          <!-- Populated dynamically by ExperimentLibrary -->
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE: COMPARISON LAB (P0)
+      =============================================== -->
+      <section id="page-comparison" class="page-view">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>Comparison Lab <span class="nav-badge p0" style="font-size: 0.75rem;">P0</span></h2>
+            <p class="page-subtitle">Perform multi-experiment side-by-side analysis, evaluate unit compatibility, and inspect difference highlights.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-secondary btn-sm" onclick="comparisonLab.loadPreset('pmma_scale')">Preset: PMMA Scale</button>
+            <button class="btn btn-secondary btn-sm" onclick="comparisonLab.loadPreset('gas_diffusion')">Preset: CIR Gas Soot</button>
+            <button class="btn btn-warning btn-sm" onclick="comparisonLab.loadPreset('incompatible_demo')">Demo: Comparability Guardrail</button>
+          </div>
+        </div>
+
+        <div class="comparison-container">
+          <!-- Selection Strip -->
+          <div class="selector-strip">
+            <div class="selector-strip-header">
+              <span>Active Experiments for Comparison:</span>
+              <div style="min-width: 320px;">
+                <select id="comp-add-experiment-select" class="filter-select" style="width: 100%;">
+                  <option value="">+ Add an experiment to comparison...</option>
+                </select>
+              </div>
+            </div>
+            <div id="comp-selected-chips-tray" class="chip-selection-tray">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Parameter Alignment & Diff Table -->
+          <div id="comp-table-container">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- Variable Selection & Visualizations -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div class="chart-title">
+                <span>Comparative Telemetry Analysis</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <label for="comp-variable-select" style="font-size: 0.78rem; color: var(--text-secondary); font-weight: 600;">Target Variable:</label>
+                <select id="comp-variable-select" class="filter-select">
+                  <option value="Flame Spread Rate">Flame Spread Rate</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Dynamic Compatibility Warning / Conversion Banner -->
+            <div id="comp-warning-container"></div>
+
+            <!-- Primary Harmonized Plot -->
+            <div id="comp-primary-plot-container" class="chart-container-svg" style="height: 300px;"></div>
+
+            <!-- Separate Diagnostic Plots (Triggered on Incompatibility) -->
+            <div id="comp-separate-plots-container" class="multi-chart-grid" style="display: none;"></div>
+
+            <!-- Time-Series Spread Progression Curves -->
+            <div id="comp-timeseries-container" style="display: none; border-top: 1px solid var(--border-subtle); padding-top: 16px; margin-top: 10px;">
+              <h4 style="font-size: 0.9rem; color: #fff; margin-bottom: 10px;">Time-Series Propagation Trajectories</h4>
+              <div id="comp-timeseries-plot" class="chart-container-svg" style="height: 320px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE: RESEARCH ASSISTANT (P0)
+      =============================================== -->
+      <section id="page-assistant" class="page-view">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>Evidence-Grounded Research Assistant <span class="nav-badge p0" style="font-size: 0.75rem;">P0</span></h2>
+            <p class="page-subtitle">Query microgravity combustion literature with strict grounding, statement type badging, and auditable evidence drawers.</p>
+          </div>
+          <div class="page-actions">
+            <span class="telemetry-pill ready"><span class="indicator-dot"></span> GROUNDING ACTIVE: 6 INDEXED PUBLICATIONS</span>
+          </div>
+        </div>
+
+        <div class="assistant-container">
+          <!-- Chat Panel -->
+          <div class="chat-panel">
+            <div id="assistant-messages-scroll" class="chat-messages-scroll">
+              <!-- Populated dynamically by ResearchAssistant -->
+            </div>
+
+            <div class="chat-input-bar">
+              <input type="text" id="assistant-chat-input" placeholder="Ask about flame spread, extinction limits, airflow convection, or cool flames..." aria-label="Query research assistant">
+              <button class="btn btn-primary" id="assistant-send-btn">Send Query →</button>
+            </div>
+          </div>
+
+          <!-- Assistant Sidebar & Preset Queries -->
+          <div class="chat-sidebar">
+            <div class="assistant-guardrail-card">
+              <h4 style="font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 6px;">Grounding Architecture</h4>
+              <p style="font-size: 0.76rem; color: var(--text-secondary); line-height: 1.45;">
+                Every factual claim is cross-referenced with passage excerpts and tagged by epistemological status:
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 8px;">
+                <span class="statement-badge measured-fact">MEASURED FACT</span>
+                <span class="statement-badge paper-conclusion">PAPER CONCLUSION</span>
+                <span class="statement-badge cross-study">CROSS-STUDY INTERPRETATION</span>
+                <span class="statement-badge model-estimate">MODEL ESTIMATE</span>
+              </div>
+            </div>
+
+            <div class="preset-queries-card">
+              <h4 style="font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 4px;">Preset Research Inquiries</h4>
+              <p style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 8px;">Click to test grounded retrieval &amp; citation:</p>
+
+              <button class="preset-query-btn" onclick="researchAssistant.askPreset('What is the effect of forced airflow on PMMA flame spread in microgravity?')">
+                💨 How does concurrent airflow affect PMMA flame spread rate?
+              </button>
+              <button class="preset-query-btn" onclick="researchAssistant.askPreset('What are the low-flow extinction limits for cotton-fiberglass Sibal fabric?')">
+                🧯 What are the low-flow extinction limits for Sibal fabric?
+              </button>
+              <button class="preset-query-btn" onclick="researchAssistant.askPreset('Compare soot production and radiative heat loss between methane and ethylene in CIR.')">
+                🔥 Compare methane vs ethylene soot and radiative fraction in CIR
+              </button>
+              <button class="preset-query-btn" onclick="researchAssistant.askPreset('What cool flame phenomena were discovered in the FLEX droplet investigation?')">
+                💧 What cool flame phenomena were observed in FLEX droplet tests?
+              </button>
+              <button class="preset-query-btn" onclick="researchAssistant.askPreset('What is the fire risk score for a lunar habitat habitat module?')" style="border-color: rgba(245, 158, 11, 0.4);">
+                🛡️ Test Guardrail: Ask for ungrounded lunar fire risk score
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE: KNOWLEDGE GRAPH (P1)
+      =============================================== -->
+      <section id="page-graph" class="page-view">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>Microgravity Combustion Knowledge Graph <span class="nav-badge p1" style="font-size: 0.75rem;">P1</span></h2>
+            <p class="page-subtitle">Interactive topological network mapping investigations, materials, conditions, measurements, and published findings.</p>
+          </div>
+          <div class="page-actions">
+            <select id="graph-filter-type" class="filter-select">
+              <option value="all">Filter Node Type: All</option>
+              <option value="investigation">Investigations</option>
+              <option value="material">Materials & Fuels</option>
+              <option value="condition">Environmental Conditions</option>
+              <option value="measurement">Measurements</option>
+              <option value="finding">Scientific Findings</option>
+              <option value="publication">Publications</option>
+            </select>
+            <input type="text" id="graph-search-input" class="filter-select" placeholder="Locate node..." style="width: 140px;">
+          </div>
+        </div>
+
+        <div class="graph-container">
+          <div class="graph-canvas-area">
+            <canvas id="knowledge-graph-canvas"></canvas>
+
+            <div class="graph-controls">
+              <button class="graph-control-btn" id="graph-zoom-in" title="Zoom In">+</button>
+              <button class="graph-control-btn" id="graph-zoom-out" title="Zoom Out">-</button>
+              <button class="graph-control-btn" id="graph-reset-view" title="Reset View">⟲</button>
+            </div>
+
+            <div class="graph-legend-strip">
+              <span><span class="legend-node-dot" style="background: #00F0FF;"></span>Investigation</span>
+              <span><span class="legend-node-dot" style="background: #FF7700;"></span>Material</span>
+              <span><span class="legend-node-dot" style="background: #A855F7;"></span>Condition</span>
+              <span><span class="legend-node-dot" style="background: #10B981;"></span>Measurement</span>
+              <span><span class="legend-node-dot" style="background: #EF4444;"></span>Finding</span>
+              <span><span class="legend-node-dot" style="background: #3B82F6;"></span>Publication</span>
+            </div>
+          </div>
+
+          <!-- Node Scientific Dossier Panel -->
+          <div class="graph-inspector-panel" id="graph-inspector-panel">
+            <div id="graph-inspector-body">
+              <div style="font-size: 0.82rem; color: var(--text-muted); text-align: center; padding: 20px;">
+                Click any node on the canvas to inspect its scientific relationships, edge-level source citations, and linked experiments.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE: RESEARCH GAP MATRIX (P1)
+      =============================================== -->
+      <section id="page-gap-matrix" class="page-view">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>Research Gap Matrix <span class="nav-badge p1" style="font-size: 0.75rem;">P1</span></h2>
+            <p class="page-subtitle">Multi-dimensional coverage heatmap identifying tested regimes vs unrepresented parameter spaces in the indexed collection.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-secondary btn-sm" id="gap-export-report-btn">📄 Export Gap Report (MD)</button>
+          </div>
+        </div>
+
+        <div class="gap-matrix-container">
+          <!-- Scope & Guardrail Banner -->
+          <div id="gap-scope-banner"></div>
+
+          <!-- Controls Bar -->
+          <div class="matrix-controls-bar">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <div>
+                <label for="gap-xaxis-select" style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Primary Axis (X-Axis):</label>
+                <select id="gap-xaxis-select" class="filter-select">
+                  <option value="gravity">Gravity Conditions (Microgravity, Lunar, Martian, 1g)</option>
+                  <option value="pressure">Pressure Ranges (Sub-Atmospheric, Normobaric, Hyperbaric)</option>
+                  <option value="oxygen">Oxygen Concentrations (Hypoxic, Ambient, Enriched)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="gap-outcome-select" style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 4px;">Target Measured Outcome:</label>
+                <select id="gap-outcome-select" class="filter-select">
+                  <option value="flame_spread_rate">Flame Spread Rate</option>
+                  <option value="extinction_limits">Extinction Velocity / Limit</option>
+                  <option value="soot_radiation">Soot Volume &amp; Radiant Heat Flux</option>
+                  <option value="cool_flame">Cool Flame Dynamics</option>
+                  <option value="pyrolysis_temp">Peak Surface Temperature</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Heatmap Legend -->
+            <div style="display: flex; gap: 14px; font-size: 0.75rem;">
+              <span style="display: flex; align-items: center; gap: 5px;">
+                <span style="width: 12px; height: 12px; border-radius: 3px; background: rgba(16, 185, 129, 0.4); border: 1px solid #34d399;"></span>
+                <span>Records found</span>
+              </span>
+              <span style="display: flex; align-items: center; gap: 5px;">
+                <span style="width: 12px; height: 12px; border-radius: 3px; background: rgba(30, 41, 59, 0.6); border: 1px dashed #64748b;"></span>
+                <span>Not found in indexed collection</span>
+              </span>
+              <span style="display: flex; align-items: center; gap: 5px;">
+                <span style="width: 12px; height: 12px; border-radius: 3px; background: rgba(168, 85, 247, 0.3); border: 1px solid #c084fc;"></span>
+                <span>Not enough metadata to determine</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Heatmap Matrix Table -->
+          <div id="gap-heatmap-container" class="matrix-table-wrapper">
+            <!-- Populated dynamically by ResearchGapMatrix -->
+          </div>
+
+          <!-- Automated Gap Synthesis Summary Card -->
+          <div class="gap-summary-card">
+            <div id="gap-summary-content">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE: PREDICTION & SCENARIO EXPLORER (P2, CONDITIONAL)
+      =============================================== -->
+      <section id="page-prediction" class="page-view">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>Prediction &amp; Scenario Explorer <span class="nav-badge p2" style="font-size: 0.75rem;">P2 Conditional</span></h2>
+            <p class="page-subtitle">Exploratory flame spread estimation tool for thin and thick solid fuels under microgravity ventilation.</p>
+          </div>
+          <div class="page-actions">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.82rem; font-weight: 600; background: var(--bg-surface-elevated); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border-subtle);">
+              <span>Enable Explorer Mode:</span>
+              <input type="checkbox" id="prediction-flag-toggle" style="cursor: pointer; width: 18px; height: 18px;">
+            </label>
+          </div>
+        </div>
+
+        <!-- Locked Banner (Default State) -->
+        <div id="prediction-locked-banner" class="prediction-locked-banner">
+          <div style="font-size: 3rem;">🔒</div>
+          <h3 style="color: #fff; font-size: 1.3rem;">Prediction Feature Flagged OFF by Default</h3>
+          <p style="color: var(--text-secondary); max-width: 640px; font-size: 0.88rem; line-height: 1.5;">
+            In accordance with NASA scientific guardrails, predictive combustion modeling is restricted to compatible flight envelopes with documented Leave-One-Out Cross-Validation (LOOCV), explicit error bounds (MAE/RMSE), and strict domain bounds.
+          </p>
+          <div class="callout-box warning" style="max-width: 600px; text-align: left;">
+            <div class="callout-icon">⚠️</div>
+            <div class="callout-text">
+              <strong>Scientific Notice:</strong> This explorer produces physical spread rate estimates only. It does <em>not</em> compute a fire-risk score and must not be used for certified vehicle flight readiness or suppression commanding.
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="predictionExplorer.enableFeature()">
+            Acknowledge Scientific Notice &amp; Enable Explorer →
+          </button>
+        </div>
+
+        <!-- Active Workspace (Visible when Flagged ON) -->
+        <div id="prediction-workspace" class="prediction-workspace" style="display: none;">
+          <!-- Scenario Input Form -->
+          <div class="scenario-form-card">
+            <h4 style="font-size: 0.95rem; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px;">
+              Input Parameter Envelope
+            </h4>
+
+            <div class="form-group">
+              <label for="pred-mat-select">Solid Fuel Material:</label>
+              <select id="pred-mat-select">
+                <option value="Polymethyl Methacrylate (PMMA)">Polymethyl Methacrylate (PMMA, 10mm slab)</option>
+                <option value="Cotton/Fiberglass Blend (Sibal)">Cotton/Fiberglass Blend (Sibal fabric)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pred-o2-input" style="display: flex; justify-content: space-between;">
+                <span>Oxygen Concentration:</span>
+                <span id="pred-o2-val" style="font-family: var(--font-mono); color: var(--accent-cyan);">21.0 %</span>
+              </label>
+              <input type="range" id="pred-o2-input" min="14.0" max="32.0" step="0.5" value="21.0">
+              <span style="font-size: 0.68rem; color: var(--text-muted);">Verified Envelope: 16.0% to 30.0% O2</span>
+            </div>
+
+            <div class="form-group">
+              <label for="pred-flow-input" style="display: flex; justify-content: space-between;">
+                <span>Concurrent Forced Airflow:</span>
+                <span id="pred-flow-val" style="font-family: var(--font-mono); color: var(--accent-cyan);">5.0 cm/s</span>
+              </label>
+              <input type="range" id="pred-flow-input" min="0.0" max="25.0" step="0.5" value="5.0">
+              <span style="font-size: 0.68rem; color: var(--text-muted);">Verified Envelope: 1.0 to 20.0 cm/s</span>
+            </div>
+
+            <div class="form-group">
+              <label for="pred-press-input" style="display: flex; justify-content: space-between;">
+                <span>Chamber Pressure:</span>
+                <span id="pred-press-val" style="font-family: var(--font-mono); color: var(--accent-cyan);">101.3 kPa</span>
+              </label>
+              <input type="range" id="pred-press-input" min="80.0" max="115.0" step="0.5" value="101.3">
+              <span style="font-size: 0.68rem; color: var(--text-muted);">Verified Envelope: 90.0 to 105.0 kPa</span>
+            </div>
+
+            <div style="background: var(--bg-surface-elevated); padding: 10px; border-radius: 6px; font-size: 0.72rem; color: var(--text-muted);">
+              <strong>Target Quantity:</strong> <code>Flame Spread Rate (mm/s)</code><br>
+              Simulating concurrent low-speed boundary-layer convective heating against solid conductive heat absorption.
+            </div>
+          </div>
+
+          <!-- Prediction Results Card -->
+          <div class="prediction-results-card" id="prediction-results-content">
+            <!-- Populated dynamically by PredictionExplorer -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE: DATA INGESTION & IMPORT
+      =============================================== -->
+      <section id="page-import-data" class="page-view">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>Data Ingestion &amp; Schema Mapping Wizard</h2>
+            <p class="page-subtitle">Import CSV or JSON experiment datasets, map custom headers to the FLARE-X schema, and run validation audits.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline btn-sm" id="import-reset-dataset-btn">⟲ Reset to Default NASA Records</button>
+          </div>
+        </div>
+
+        <div id="import-wizard-container">
+          <!-- Populated dynamically by DataImporter -->
+        </div>
+      </section>
+
+      <!-- ==============================================
+           PAGE: ABOUT & SCIENTIFIC GUARDRAILS
+      =============================================== -->
+      <section id="page-about" class="page-view">
+        <div class="page-header">
+          <div class="page-title-group">
+            <h2>Scientific Guardrails &amp; Platform Architecture</h2>
+            <p class="page-subtitle">Fundamental physical combustion principles, system constraints, and legal disclaimers.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px; max-width: 1000px;">
+          <!-- 5 Physical Guardrails -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 24px;">
+            <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 16px;">The Five Essential Microgravity Combustion Guardrails</h3>
+
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <div class="callout-box info" style="margin: 0;">
+                <div class="callout-icon">1️⃣</div>
+                <div>
+                  <div class="callout-title">Microgravity is Reduced Buoyancy, Not the Absence of Gravity</div>
+                  <div class="callout-text">
+                    In low Earth orbit (~400 km), gravitational acceleration is ~90% of sea-level value; the microgravity state ($\approx 10^{-6}$ to $10^{-4}$ g) results from continuous free-fall. Combustion physics is altered because buoyant natural convection ($Gr \propto g$) vanishes, removing the upward plume that terraneously supplies fresh oxidizer and sweeps away combustion products.
+                  </div>
+                </div>
+              </div>
+
+              <div class="callout-box info" style="margin: 0;">
+                <div class="callout-icon">2️⃣</div>
+                <div>
+                  <div class="callout-title">Spacecraft Ventilation Creates Forced Convection Airflow</div>
+                  <div class="callout-text">
+                    Because buoyant ventilation does not occur naturally in microgravity, crewed spacecraft (such as the ISS) continuously circulate air via fans at $5 - 20\text{ cm/s}$ to prevent CO₂ pocket accumulation. This forced airflow sustains and accelerates flame spread regimes that would otherwise self-extinguish under pure molecular diffusion.
+                  </div>
+                </div>
+              </div>
+
+              <div class="callout-box info" style="margin: 0;">
+                <div class="callout-icon">3️⃣</div>
+                <div>
+                  <div class="callout-title">Microgravity Models Cannot Automatically Predict Lunar or Martian Combustion</div>
+                  <div class="callout-text">
+                    Partial gravity environments (Lunar $0.16g$, Martian $0.38g$) re-introduce buoyancy-driven convective flows at non-zero Grashof numbers. Mathematical models and empirical scaling rules calibrated for $10^{-5}$ g microgravity cannot be linearly scaled or assumed valid for partial gravity without re-introducing mixed-convection dimensionless parameters ($Ri = Gr / Re^2$).
+                  </div>
+                </div>
+              </div>
+
+              <div class="callout-box info" style="margin: 0;">
+                <div class="callout-icon">4️⃣</div>
+                <div>
+                  <div class="callout-title">High Measured Temperature is Not a Complete Measure of Fire Risk</div>
+                  <div class="callout-text">
+                    Spacecraft fire safety depends on a complex interplay of limiting oxygen concentration (LOC), radiative fraction, extinction velocity, pyrolysis gas generation rate, and smoke optical obscuration. Cool flames (discovered in FLEX) sustain chemical heat release and fuel consumption below $800\text{ K}$ with zero visible emission, representing a stealth hazard invisible to standard optical flame detectors.
+                  </div>
+                </div>
+              </div>
+
+              <div class="callout-box info" style="margin: 0;">
+                <div class="callout-icon">5️⃣</div>
+                <div>
+                  <div class="callout-title">Research Gap Results Reflect the Indexed Collection Only</div>
+                  <div class="callout-text">
+                    FLARE-X indexes a curated set of flight experiments and publication passages. An unrepresented cell in the Research Gap Matrix indicates that the condition is absent from <em>this specific software index</em>. It does NOT assert that NASA, international space agencies, or university researchers have not investigated that domain.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy on Risk Scores -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 24px;">
+            <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 8px;">Strict Policy Against Quantitative "Fire-Risk Scores"</h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 12px;">
+              FLARE-X intentionally omits pseudo-quantitative "fire risk indexes" or arbitrary 1-100 severity scores. Combustion in enclosed spacecraft habitats is non-linear and context-dependent. Reducing multidimensional physics (flame spread velocity, smoke obscuration rate, toxic gas yield, and critical airflow extinction) to a single scalar score creates a dangerous illusion of safety and is scientifically unfounded.
+            </p>
+          </div>
+
+          <!-- Schema Specification -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 24px;">
+            <h3 style="font-size: 1.15rem; color: #fff; margin-bottom: 8px;">Standardized Experiment Data Schema</h3>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 14px;">
+              Every experiment ingested into FLARE-X adheres to this standardized schema:
+            </p>
+            <div class="scientific-table-wrapper">
+              <table class="scientific-table">
+                <thead>
+                  <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Requirement</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><code>id</code></td><td>String</td><td>Required</td><td>Unique identifier (e.g. <code>EXP-BASS-PMMA-01</code>)</td></tr>
+                  <tr><td><code>name</code></td><td>String</td><td>Required</td><td>Descriptive scientific investigation title</td></tr>
+                  <tr><td><code>objective</code></td><td>String</td><td>Required</td><td>Primary experimental hypothesis or goal</td></tr>
+                  <tr><td><code>platform</code></td><td>String</td><td>Required</td><td>Facility (e.g. ISS MSG, CIR, Cygnus Saffire, Drop Tower)</td></tr>
+                  <tr><td><code>gravity_condition</code></td><td>String</td><td>Required</td><td>Gravity level (e.g. Microgravity ~10^-5 g)</td></tr>
+                  <tr><td><code>material_fuel</code></td><td>String</td><td>Required</td><td>Sample fuel material, thickness, and geometry</td></tr>
+                  <tr><td><code>oxygen_percent</code></td><td>Object</td><td>Value + Unit</td><td>Volume percentage with uncertainty (e.g. 21.0 ± 0.5%)</td></tr>
+                  <tr><td><code>pressure</code></td><td>Object</td><td>Value + Unit</td><td>Absolute chamber pressure (e.g. 101.3 ± 0.2 kPa)</td></tr>
+                  <tr><td><code>airflow</code></td><td>Object</td><td>Value + Unit</td><td>Forced velocity &amp; direction (e.g. 5.0 cm/s concurrent)</td></tr>
+                  <tr><td><code>measured_variables[]</code></td><td>Array</td><td>Structured</td><td>Name, value, unit, scientific definition, sensor optics</td></tr>
+                  <tr><td><code>source_document</code></td><td>String</td><td>Required</td><td>Full bibliographic citation of published peer-reviewed source</td></tr>
+                  <tr><td><code>source_url</code></td><td>String</td><td>DOI / URL</td><td>Permanent digital object identifier link</td></tr>
+                  <tr><td><code>retrieval_date</code></td><td>ISO Date</td><td>Required</td><td>Date indexed into FLARE-X repository</td></tr>
+                  <tr><td><code>provenance_per_field</code></td><td>Object</td><td>Traceability</td><td>Mapping of schema fields to specific tables, figures, or telemetry channels</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Full Scientific Dossier Modal -->
+  <div id="dossier-modal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="dossier-modal-title">Scientific Dossier</h3>
+        <button class="modal-close-btn" id="dossier-modal-close" aria-label="Close dossier">&times;</button>
+      </div>
+      <div class="modal-body" id="dossier-modal-body">
+        <!-- Content populated dynamically -->
+      </div>
+      <div class="modal-footer">
+        <span style="font-size: 0.74rem; color: var(--text-muted);">FLARE-X Scientific Traceability Engine</span>
+        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('dossier-modal').classList.remove('open')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Mission-Control Footer -->
+  <footer class="app-footer">
+    <div class="footer-disclaimer">
+      <span class="disclaimer-icon">⚠️</span>
+      <span>Research decision-support tool. Not certified spacecraft safety guidance. Not an official NASA product.</span>
+    </div>
+    <div class="footer-links">
+      <a href="#about" onclick="app.navigateTo('about')">Scientific Guardrails</a>
+      <a href="#import-data" onclick="app.navigateTo('import-data')">Data Provenance</a>
+      <a href="https://psi.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA Physical Sciences Informatics (PSI)</a>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="data/default-bundle.js"></script>
+  <script src="data/nasa-flex-bundle.js"></script>
+  <script src="js/data-service.js"></script>
+  <script src="js/unit-converter.js"></script>
+  <script src="js/chart-renderer.js"></script>
+  <script src="js/library.js"></script>
+  <script src="js/comparison.js"></script>
+  <script src="js/assistant.js"></script>
+  <script src="js/graph.js"></script>
+  <script src="js/gap-matrix.js"></script>
+  <script src="js/prediction.js"></script>
+  <script src="js/import-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

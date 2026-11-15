@@ -1,0 +1,77 @@
+{
+  "graph_metadata": {
+    "version": "1.0.0-placeholder",
+    "description": "FLARE-X Microgravity Combustion Knowledge Graph, connecting investigations, materials, conditions, measurements, publications, and findings.",
+    "is_placeholder": true
+  },
+  "nodes": [
+    { "id": "INV-BASS", "label": "BASS Investigation", "type": "investigation", "group": "investigation", "description": "Burning and Suppression of Solids aboard the ISS MSG" },
+    { "id": "INV-ACME", "label": "ACME Investigation", "type": "investigation", "group": "investigation", "description": "Advanced Combustion via Microgravity Experiments in the CIR" },
+    { "id": "INV-SAFFIRE", "label": "Saffire Investigation", "type": "investigation", "group": "investigation", "description": "Spacecraft Fire Safety Experiment in Cygnus Cargo Vehicles" },
+    { "id": "INV-FLEX", "label": "FLEX Investigation", "type": "investigation", "group": "investigation", "description": "Flame Extinction Experiment in the CIR" },
+    { "id": "INV-SLICES", "label": "SLICES Investigation", "type": "investigation", "group": "investigation", "description": "Solid Fuel Ignition and Extinction in MSG" },
+
+    { "id": "MAT-PMMA", "label": "PMMA (Acrylic)", "type": "material", "group": "material", "description": "Polymethyl Methacrylate solid thermoplastic fuel" },
+    { "id": "MAT-SIBAL", "label": "Sibal Fabric", "type": "material", "group": "material", "description": "75% Cotton / 25% Fiberglass blend standard fabric" },
+    { "id": "MAT-CH4", "label": "Methane (CH4)", "type": "material", "group": "material", "description": "Gaseous hydrocarbon diffusion fuel" },
+    { "id": "MAT-C2H4", "label": "Ethylene (C2H4)", "type": "material", "group": "material", "description": "Highly sooting gaseous fuel" },
+    { "id": "MAT-HEPTANE", "label": "n-Heptane", "type": "material", "group": "material", "description": "Liquid alkane fuel droplet" },
+    { "id": "MAT-HDPE", "label": "HDPE Rod", "type": "material", "group": "material", "description": "High-density polyethylene cylindrical rod" },
+
+    { "id": "COND-U-GRAV", "label": "Microgravity (~10^-6 g)", "type": "condition", "group": "condition", "description": "Reduced buoyancy-driven convection environment" },
+    { "id": "COND-FLOW-LOW", "label": "Low Forced Airflow (1-5 cm/s)", "type": "condition", "group": "condition", "description": "Spacecraft ambient cabin ventilation regime" },
+    { "id": "COND-FLOW-HIGH", "label": "High Forced Airflow (15-20 cm/s)", "type": "condition", "group": "condition", "description": "Emergency duct / filter ventilation regime" },
+    { "id": "COND-QUIESCENT", "label": "Quiescent (0 cm/s)", "type": "condition", "group": "condition", "description": "Pure diffusion environment without forced draft" },
+    { "id": "COND-HYPOXIC", "label": "Hypoxic (18% O2)", "type": "condition", "group": "condition", "description": "Exploration atmosphere reduced O2 condition" },
+
+    { "id": "MEAS-SPREAD", "label": "Flame Spread Rate", "type": "measurement", "group": "measurement", "description": "Front progression linear velocity (mm/s)" },
+    { "id": "MEAS-EXTINCT", "label": "Extinction Velocity / Limit", "type": "measurement", "group": "measurement", "description": "Critical flow or mass flow rate below which flame quenches" },
+    { "id": "MEAS-SOOT", "label": "Soot Volume Fraction", "type": "measurement", "group": "measurement", "description": "Particulate carbon optical concentration (ppm)" },
+    { "id": "MEAS-RAD-FLUX", "label": "Radiative Heat Flux", "type": "measurement", "group": "measurement", "description": "Electromagnetic energy emitted per unit area (kW/m²)" },
+    { "id": "MEAS-COOL-FLAME", "label": "Cool Flame Duration", "type": "measurement", "group": "measurement", "description": "Low-temperature second-stage chemical reaction time (s)" },
+
+    { "id": "FIND-RAD-EXTINCT", "label": "Radiative Extinction at Low Flow", "type": "finding", "group": "finding", "description": "Flames self-extinguish when flow is too slow due to radiative heat loss exceeding heat release" },
+    { "id": "FIND-SCALE-WIDTH", "label": "Nonlinear Width Scaling", "type": "finding", "group": "finding", "description": "Large-scale fuel panels burn faster than predicted by narrow laboratory samples" },
+    { "id": "FIND-COOL-BURNING", "label": "Stealth Cool Flame Combustion", "type": "finding", "group": "finding", "description": "Alkane droplets sustain reaction below 800 K without visible luminosity after hot flame death" },
+
+    { "id": "PUB-OLSON-2015", "label": "Olson et al. (2015)", "type": "publication", "group": "publication", "description": "Proc. Combust. Inst. 35(3):2631-2638" },
+    { "id": "PUB-FERKUL-2016", "label": "Ferkul & Olson (2016)", "type": "publication", "group": "publication", "description": "Combustion and Flame 166:120-128" },
+    { "id": "PUB-SUNDERLAND-2019", "label": "Sunderland et al. (2019)", "type": "publication", "group": "publication", "description": "Combustion and Flame 206:11-21" },
+    { "id": "PUB-URBAN-2019", "label": "Urban et al. (2019)", "type": "publication", "group": "publication", "description": "Proc. Combust. Inst. 37(3):4153-4160" },
+    { "id": "PUB-NAYAGAM-2015", "label": "Nayagam et al. (2015)", "type": "publication", "group": "publication", "description": "Combustion and Flame 162(5):2140-2147" }
+  ],
+  "edges": [
+    { "source": "INV-BASS", "target": "MAT-PMMA", "relationship": "uses_material", "source_citation": "Olson et al., Proc. Combust. Inst. (2015), p. 2631" },
+    { "source": "INV-BASS", "target": "MAT-SIBAL", "relationship": "uses_material", "source_citation": "Ferkul & Olson, Combust. Flame (2016), p. 120" },
+    { "source": "INV-BASS", "target": "COND-U-GRAV", "relationship": "studies", "source_citation": "BASS Mission Science Requirements Doc, NASA GRC (2012)" },
+    { "source": "INV-BASS", "target": "COND-FLOW-LOW", "relationship": "studies", "source_citation": "Olson et al., Proc. Combust. Inst. (2015), p. 2632" },
+    { "source": "INV-BASS", "target": "MEAS-SPREAD", "relationship": "measures", "source_citation": "Olson et al., Proc. Combust. Inst. (2015), p. 2634" },
+    { "source": "INV-BASS", "target": "MEAS-EXTINCT", "relationship": "measures", "source_citation": "Ferkul & Olson, Combust. Flame (2016), p. 124" },
+    { "source": "INV-BASS", "target": "FIND-RAD-EXTINCT", "relationship": "reports_finding", "source_citation": "Ferkul & Olson, Combust. Flame (2016), p. 126" },
+    { "source": "INV-BASS", "target": "PUB-OLSON-2015", "relationship": "related_publication", "source_citation": "NASA Physical Sciences Informatics System Record #BASS-01" },
+    { "source": "INV-BASS", "target": "PUB-FERKUL-2016", "relationship": "related_publication", "source_citation": "NASA Physical Sciences Informatics System Record #BASS-02" },
+
+    { "source": "INV-SAFFIRE", "target": "MAT-SIBAL", "relationship": "uses_material", "source_citation": "Urban et al., Proc. Combust. Inst. (2019), p. 4154" },
+    { "source": "INV-SAFFIRE", "target": "MAT-PMMA", "relationship": "uses_material", "source_citation": "Urban et al., Proc. Combust. Inst. (2019), p. 4155" },
+    { "source": "INV-SAFFIRE", "target": "COND-FLOW-HIGH", "relationship": "studies", "source_citation": "Saffire-I Flight Experiment Report, NASA/TM-2018-219925" },
+    { "source": "INV-SAFFIRE", "target": "MEAS-SPREAD", "relationship": "measures", "source_citation": "Urban et al., Proc. Combust. Inst. (2019), p. 4156" },
+    { "source": "INV-SAFFIRE", "target": "MEAS-RAD-FLUX", "relationship": "measures", "source_citation": "Urban et al., Proc. Combust. Inst. (2019), p. 4157" },
+    { "source": "INV-SAFFIRE", "target": "FIND-SCALE-WIDTH", "relationship": "reports_finding", "source_citation": "Urban et al., Proc. Combust. Inst. (2019), p. 4158" },
+    { "source": "INV-SAFFIRE", "target": "PUB-URBAN-2019", "relationship": "related_publication", "source_citation": "NASA Saffire Science Results Archive, 2019" },
+
+    { "source": "INV-ACME", "target": "MAT-CH4", "relationship": "uses_material", "source_citation": "Sunderland et al., Combust. Flame (2019), p. 12" },
+    { "source": "INV-ACME", "target": "MAT-C2H4", "relationship": "uses_material", "source_citation": "Urban et al., Proc. Combust. Inst. (2021), p. 4786" },
+    { "source": "INV-ACME", "target": "COND-QUIESCENT", "relationship": "studies", "source_citation": "CIR ACME User Operations Manual Rev 2" },
+    { "source": "INV-ACME", "target": "MEAS-SOOT", "relationship": "measures", "source_citation": "Sunderland et al., Combust. Flame (2019), p. 16" },
+    { "source": "INV-ACME", "target": "PUB-SUNDERLAND-2019", "relationship": "related_publication", "source_citation": "NASA PSI Record #ACME-004" },
+
+    { "source": "INV-FLEX", "target": "MAT-HEPTANE", "relationship": "uses_material", "source_citation": "Nayagam et al., Combust. Flame (2015), p. 2141" },
+    { "source": "INV-FLEX", "target": "COND-QUIESCENT", "relationship": "studies", "source_citation": "FLEX Science Team Summary Report, NASA TM (2014)" },
+    { "source": "INV-FLEX", "target": "MEAS-COOL-FLAME", "relationship": "measures", "source_citation": "Nayagam et al., Combust. Flame (2015), p. 2143" },
+    { "source": "INV-FLEX", "target": "FIND-COOL-BURNING", "relationship": "reports_finding", "source_citation": "Nayagam et al., Combust. Flame (2015), p. 2145" },
+    { "source": "INV-FLEX", "target": "PUB-NAYAGAM-2015", "relationship": "related_publication", "source_citation": "NASA PSI Record #FLEX-012" },
+
+    { "source": "INV-SLICES", "target": "MAT-HDPE", "relationship": "uses_material", "source_citation": "Bhattacharjee et al., AIAA-2017-3852, p. 3" },
+    { "source": "INV-SLICES", "target": "MEAS-SPREAD", "relationship": "measures", "source_citation": "Bhattacharjee et al., AIAA-2017-3852, p. 7" }
+  ]
+}

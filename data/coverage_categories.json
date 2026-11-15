@@ -1,0 +1,38 @@
+{
+  "coverage_axes": {
+    "materials": [
+      { "id": "PMMA", "label": "Polymethyl Methacrylate (PMMA)", "class": "Thermoplastic Solid" },
+      { "id": "SIBAL", "label": "Cotton/Fiberglass Blend (Sibal)", "class": "Thin Fabric" },
+      { "id": "HDPE", "label": "High-Density Polyethylene (HDPE)", "class": "Thermoplastic Rod" },
+      { "id": "CH4", "label": "Methane (CH4)", "class": "Gaseous Fuel" },
+      { "id": "C2H4", "label": "Ethylene (C2H4)", "class": "Gaseous Fuel" },
+      { "id": "HEPTANE", "label": "n-Heptane", "class": "Liquid Droplet" },
+      { "id": "NOMEX", "label": "Nomex / Aramid", "class": "Flame Resistant Polymer" },
+      { "id": "SILICONE", "label": "Silicone Elastomer", "class": "Elastomer" }
+    ],
+    "gravity_conditions": [
+      { "id": "microgravity", "label": "Microgravity (~10^-6 to 10^-4 g)", "range": "< 10^-3 g" },
+      { "id": "lunar", "label": "Lunar Partial-g (0.16 g)", "range": "0.15 - 0.18 g" },
+      { "id": "martian", "label": "Martian Partial-g (0.38 g)", "range": "0.35 - 0.40 g" },
+      { "id": "terrestrial", "label": "Normal Gravity (1.0 g)", "range": "0.98 - 1.02 g" }
+    ],
+    "pressure_ranges": [
+      { "id": "sub_atmospheric", "label": "Sub-Atmospheric (< 70 kPa)", "range": "0 - 70 kPa" },
+      { "id": "normobaric", "label": "Standard Normobaric (90 - 105 kPa)", "range": "90 - 105 kPa" },
+      { "id": "hyperbaric", "label": "Hyperbaric (> 105 kPa)", "range": "> 105 kPa" }
+    ],
+    "oxygen_conditions": [
+      { "id": "hypoxic", "label": "Hypoxic Exploration (< 20% O2)", "range": "10 - 19.9% O2" },
+      { "id": "ambient", "label": "Sea-Level Normoxic (20 - 22% O2)", "range": "20 - 22% O2" },
+      { "id": "enriched_moderate", "label": "Moderately Enriched (22.1 - 32% O2)", "range": "22.1 - 32% O2" },
+      { "id": "enriched_high", "label": "Highly Enriched (> 32% O2)", "range": "> 32% O2" }
+    ],
+    "measured_outcomes": [
+      { "id": "flame_spread_rate", "label": "Flame Spread Rate", "unit": "mm/s" },
+      { "id": "extinction_limits", "label": "Extinction Velocity / Limit", "unit": "cm/s or mg/s" },
+      { "id": "soot_radiation", "label": "Soot & Radiative Heat Flux", "unit": "ppm / kW/m²" },
+      { "id": "cool_flame", "label": "Cool Flame Dynamics", "unit": "s" },
+      { "id": "pyrolysis_temp", "label": "Peak Surface Temperature", "unit": "°C" }
+    ]
+  }
+}

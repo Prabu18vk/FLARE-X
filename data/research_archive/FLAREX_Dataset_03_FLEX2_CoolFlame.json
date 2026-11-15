@@ -1,0 +1,192 @@
+{
+  "dataset_id": "FLAREX-NASA-003",
+  "dataset_name": "FLEX-2 Cool-Flame Droplet Result - NASA MDCA/FLEX-2",
+  "dataset_scope": {
+    "record_count": 1,
+    "scope_note": "One explicitly identified FLEX-2 experiment result transcribed from a NASA presentation slide. This is not the complete PSI-70 archive or a complete FLEX-2 test table."
+  },
+  "investigation": {
+    "name": "Flame Extinguishment Experiment-2 (FLEX-2)",
+    "psi_identifier": "PSI-70",
+    "psi_identifier_status": "The PSI-70 identifier was supplied in the project context and appears in a secondary dataset catalogue; the current NASA PSI record page did not expose readable metadata during this collection. The NASA NTRS presentation independently identifies the experiment as FLEX-2.",
+    "platform": "International Space Station",
+    "facility": "Combustion Integrated Rack (CIR), Multi-user Droplet Combustion Apparatus (MDCA)",
+    "gravity_condition": {
+      "label": "microgravity",
+      "numeric_g": null,
+      "note": "NASA describes the FLEX-2 work as microgravity droplet combustion. No test-specific numeric residual-g value is printed with this example."
+    }
+  },
+  "sources": {
+    "primary_data_source": {
+      "organization": "NASA Glenn Research Center",
+      "document_title": "NASA Microgravity Combustion: ISS Results and Future Plans",
+      "author": "David L. Urban",
+      "ntrs_document_id": "20170009863",
+      "ntrs_record_url": "https://ntrs.nasa.gov/citations/20170009863",
+      "direct_pdf_url": "https://ntrs.nasa.gov/api/citations/20170009863/downloads/20170009863.pdf",
+      "doi": null,
+      "doi_status": "No DOI was listed on the NASA NTRS record for this presentation.",
+      "data_location": {
+        "pdf_page": 6,
+        "slide_title": "MDCA-FLEX-2 Results",
+        "figure": "Droplet and flame history",
+        "data_locator": "Experimental information inset for FLEX-1148 / A109D07"
+      }
+    },
+    "official_experiment_overview": {
+      "organization": "NASA Glenn Research Center ISS Payload Operations Center",
+      "title": "Flame Extinguishment Experiment-2 (FLEX-2)",
+      "url": "https://gipoc.grc.nasa.gov/wp/fcf-cir/flex-2/",
+      "doi": null,
+      "note": "Official NASA operations overview; describes FLEX-2 fuel droplets, sub-buoyant convective flows, and droplet-array experiments."
+    },
+    "psi_record": {
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-70",
+      "doi": null,
+      "status": "The URL was checked, but its current page returned no readable metadata. No PSI DOI is asserted here."
+    },
+    "related_publication": {
+      "title": "Comprehensive study of initial diameter effects and other observations on convection-free droplet combustion in the standard atmosphere for n-heptane, n-octane, and n-decane",
+      "authors": [
+        "Yu-Cheng Liu",
+        "Y. Xu",
+        "M. C. Hicks",
+        "C. T. Avedisian"
+      ],
+      "journal": "Combustion and Flame",
+      "year": 2016,
+      "doi": "10.1016/j.combustflame.2016.05.013",
+      "url": "https://doi.org/10.1016/j.combustflame.2016.05.013",
+      "note": "Related FLEX-2 publication; the single numeric example below is transcribed from the NASA presentation inset, not extracted from this paper."
+    }
+  },
+  "records": [
+    {
+      "record_id": "FLEX2-1148",
+      "test_identifier": "FLEX-1148",
+      "hardware_identifier": "A109D07",
+      "test_date": "2016-04-18",
+      "fuel": "n-decane",
+      "ambient_conditions": {
+        "pressure": {
+          "value": 766.018,
+          "unit": "mmHg"
+        },
+        "oxygen_mole_fraction": {
+          "value": 0.21,
+          "unit": "dimensionless"
+        },
+        "nitrogen_mole_fraction": {
+          "value": 0.79,
+          "unit": "dimensionless"
+        }
+      },
+      "droplet_and_flame_measurements": {
+        "initial_droplet_diameter": {
+          "value": 5.177,
+          "unit": "mm"
+        },
+        "hot_flame_extinction_diameter": {
+          "value": 4.979,
+          "unit": "mm"
+        },
+        "average_hot_flame_burning_rate_constant": {
+          "value": 0.274,
+          "unit": "mm^2/s"
+        },
+        "average_cool_flame_burning_rate_constant": {
+          "value": 0.378,
+          "unit": "mm^2/s"
+        },
+        "cool_flame_extinction_diameter": {
+          "value": 0.827,
+          "unit": "mm"
+        }
+      },
+      "measurement_type": "NASA-reported experimental result",
+      "source_location": {
+        "document": "NASA Microgravity Combustion: ISS Results and Future Plans",
+        "ntrs_document_id": "20170009863",
+        "pdf_page": 6,
+        "slide": "MDCA-FLEX-2 Results",
+        "figure": "Droplet and flame history",
+        "inset": "FLEX-1148 / A109D07"
+      },
+      "requested_flarex_parameters": {
+        "extinction_velocity_or_limit": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported",
+          "related_reported_measurements": [
+            {
+              "name": "hot_flame_extinction_diameter",
+              "value": 4.979,
+              "unit": "mm"
+            },
+            {
+              "name": "cool_flame_extinction_diameter",
+              "value": 0.827,
+              "unit": "mm"
+            }
+          ]
+        },
+        "soot_volume_fraction": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_numeric_value_in_this_slide"
+        },
+        "radiant_heat_flux": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported_as_numeric_value_in_this_slide",
+          "note": "The plotted flame-radiance channel is in volts; it is not a calibrated heat-flux value."
+        },
+        "cool_flame_dynamics": {
+          "status": "partially_reported",
+          "measurements": [
+            {
+              "name": "average_cool_flame_burning_rate_constant",
+              "value": 0.378,
+              "unit": "mm^2/s"
+            },
+            {
+              "name": "cool_flame_extinction_diameter",
+              "value": 0.827,
+              "unit": "mm"
+            }
+          ],
+          "time_series": null,
+          "time_series_status": "not_provided_as_numeric_points_in_this_slide"
+        },
+        "peak_surface_temperature": {
+          "value": null,
+          "unit": null,
+          "status": "not_reported"
+        },
+        "flame_spread_rate": {
+          "value": null,
+          "unit": null,
+          "status": "not_applicable_to_single_droplet_combustion_record",
+          "note": "This experiment reports droplet combustion and flame extinction, not flame propagation over a solid surface."
+        }
+      }
+    }
+  ],
+  "parameter_coverage_summary": {
+    "extinction_velocity_or_limit": "No extinction velocity or oxygen extinction limit is given for this individual example. Hot- and cool-flame extinction droplet diameters are reported.",
+    "soot_volume_fraction": "Not numerically reported in the cited slide.",
+    "radiant_heat_flux": "Not numerically reported. A flame-radiance signal is plotted in volts and must not be treated as heat flux.",
+    "cool_flame_dynamics": "Partially covered by the cool-flame burning-rate constant and cool-flame extinction diameter; no tabulated time series is included.",
+    "peak_surface_temperature": "Not reported.",
+    "flame_spread_rate": "Not applicable to this isolated droplet combustion result."
+  },
+  "data_integrity": {
+    "invented_values": false,
+    "derived_values": false,
+    "interpolated_values": false,
+    "missing_value_convention": "JSON null means not reported in the cited source; it does not mean zero.",
+    "transcription_note": "All five numerical measurements in the FLEX-1148 record are copied from the experimental inset on NASA presentation slide 6. The cool-flame extinction diameter is recorded in millimetres, consistent with a diameter quantity.",
+    "coverage_warning": "This one-record extract must not be represented as the full FLEX-2 dataset. NASA's broader FLEX-2 experimental files and time-resolved image data should be obtained from the PSI investigation Data tab."
+  }
+}

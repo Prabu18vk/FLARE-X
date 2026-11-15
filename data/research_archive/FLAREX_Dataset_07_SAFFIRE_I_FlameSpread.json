@@ -1,0 +1,110 @@
+{
+  "dataset_id": "FLAREX-Dataset-07",
+  "title": "SAFFIRE-I large-scale cotton/fiberglass flame-spread measurements",
+  "version": "1.0",
+  "status": "publication-reported mean values; two test cases",
+  "gravity_condition": "microgravity",
+  "platform": "Cygnus resupply spacecraft after departure from ISS",
+  "investigation": "Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
+  "fuel": {
+    "name": "SIBAL cotton/fiberglass composite fabric",
+    "composition_by_mass": {
+      "cotton_percent": 75,
+      "fiberglass_percent": 25
+    },
+    "sample_width_cm": 40.6,
+    "sample_length_m_approx": 0.95
+  },
+  "ambient_test_condition": {
+    "air_flow_speed_cm_s": 20,
+    "flow_direction_definition": {
+      "concurrent": "flow in the same direction as flame spread",
+      "opposed": "flow against the direction of flame spread"
+    },
+    "pressure": null,
+    "oxygen_concentration": null
+  },
+  "records": [
+    {
+      "test_id": "SAFFIRE-I-concurrent",
+      "flow_direction": "concurrent",
+      "mean_flame_spread_rate_mm_s": 1.8,
+      "reported_flame_length_mm_approx": 40,
+      "reported_heat_release_kW_approx": 1.5,
+      "heat_release_note": "Paper gives an approximate theoretical heat-release equivalent assuming perfect fuel conversion; not a direct calorimetry measurement."
+    },
+    {
+      "test_id": "SAFFIRE-I-opposed",
+      "flow_direction": "opposed",
+      "mean_flame_spread_rate_mm_s": 1.3,
+      "reported_flame_length_mm_approx": 24,
+      "reported_heat_release_kW_approx": 1.1,
+      "heat_release_note": "Paper gives an approximate theoretical heat-release equivalent assuming perfect fuel conversion; not a direct calorimetry measurement."
+    }
+  ],
+  "parameter_coverage": {
+    "extinction_velocity_or_limit": {
+      "status": "not_reported_by_these_two_spread_cases",
+      "value": null
+    },
+    "soot_volume_fraction": {
+      "status": "not_reported_as_numeric_value",
+      "value": null
+    },
+    "radiant_heat_flux": {
+      "status": "not_reported_as_numeric_flux",
+      "value": null
+    },
+    "cool_flame_dynamics": {
+      "status": "not_reported",
+      "value": null
+    },
+    "peak_surface_temperature": {
+      "status": "not_reported",
+      "value": null
+    },
+    "flame_spread_rate": {
+      "status": "reported",
+      "unit": "mm/s",
+      "method": "flame position and pyrolysis-front position tracked from video; reported as average spread rates"
+    }
+  },
+  "gravity_comparison": {
+    "microgravity": "Measured during SAFFIRE-I orbital experiment.",
+    "lunar": null,
+    "martian": null,
+    "earth": "The paper mentions a ground comparison, but these two records are microgravity-only."
+  },
+  "sources": [
+    {
+      "title": "The Saffire Experiment: Large-Scale Combustion aboard the Cygnus Resupply Vehicle",
+      "source_type": "conference paper",
+      "source_url": "https://www.pure.ed.ac.uk/ws/files/31828517/The_Saffire_Experiment_2017_US_National_Meeting_Final.pdf",
+      "reported_values_location": "Figure 2 discussion, page 3 of paper (PDF page numbering may differ)",
+      "doi": null,
+      "doi_note": "No DOI identified for this conference paper."
+    },
+    {
+      "title": "Spacecraft Fire Safety: Protecting Vehicles and Crews on Long-Duration Exploration Missions",
+      "source_type": "NASA presentation",
+      "ntrs_document_id": "20180004258",
+      "source_url": "https://ntrs.nasa.gov/citations/20180004258",
+      "supporting_location": "Slides 11–13 and 19 (PDF pages 11–13 and 19)",
+      "doi": null
+    },
+    {
+      "title": "NASA Physical Sciences Informatics record: PSI-98, Spacecraft Fire Safety Experiment-I (SAFFIRE-I)",
+      "source_type": "NASA PSI repository investigation record",
+      "source_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+      "doi": "10.60555/0t15-1z43",
+      "doi_scope": "DOI for PSI-98 repository investigation record, not asserted as DOI for the conference paper."
+    }
+  ],
+  "transcription_notes": [
+    "Only two explicitly stated mean spread-rate values are included; no curve points have been digitized or estimated.",
+    "The 1.5 kW and 1.1 kW figures are theoretical heat-release equivalents stated by the paper, not direct calorimeter readings.",
+    "Missing values are null and do not mean zero.",
+    "This compact dataset is not the complete raw SAFFIRE-I PSI archive."
+  ],
+  "created_utc_date": "2026-11-15"
+}

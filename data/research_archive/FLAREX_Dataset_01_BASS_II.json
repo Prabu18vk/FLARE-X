@@ -1,0 +1,183 @@
+{
+  "dataset_id": "FLAREX-NASA-001",
+  "dataset_name": "BASS-II - Burning and Suppression of Solids II",
+  "nasa_investigation_id": "PSI-25",
+  "gravity_condition": {
+    "label": "microgravity",
+    "platform": "International Space Station",
+    "gravity_value_g": null,
+    "note": "NASA identifies this as a microgravity investigation; the report does not provide a single numeric g value for each test."
+  },
+  "source": {
+    "organization": "NASA Glenn Research Center",
+    "document_title": "Burning and Suppression of Solids-II (BASS-II) Summary Report",
+    "document_number": "NASA/TM-20210011385",
+    "publication_date": "2021-10",
+    "doi": "10.60555/4qc4-de67",
+    "official_nasa_report_url": "https://ntrs.nasa.gov/api/citations/20210011385/downloads/TM-20210011385.pdf",
+    "nasa_psi_record_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+    "source_pages": [
+      13,
+      23,
+      24,
+      25
+    ],
+    "source_tables": [
+      "Table 2.1",
+      "Appendix A test matrices"
+    ]
+  },
+  "experiment_conditions": {
+    "fuel_material": "PMMA (polymethylmethacrylate)",
+    "fuel_thickness_um": [
+      100,
+      200,
+      300,
+      400
+    ],
+    "flow_configuration": "opposed-flow flame spread",
+    "oxidizer": "O2/N2 mixture",
+    "oxygen_conditions_percent": [
+      21,
+      16
+    ],
+    "pressure_atm": 1,
+    "platform": "ISS Microgravity Science Glovebox",
+    "total_bass_ii_tests_reported": 126
+  },
+  "measurements": [
+    {
+      "record_id": "BASSII-EXT-001",
+      "parameter": "extinction_velocity",
+      "value": 1.0,
+      "unit": "cm/s",
+      "uncertainty": null,
+      "fuel_thickness_um": 100,
+      "oxygen_percent": 21,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Section 2.1.2.1, p. 13; also Section 2.2.5, p. 23",
+      "notes": "Approximate extinction velocity reported for 100 micrometre PMMA. NASA notes significant uncertainty at low flow velocities."
+    },
+    {
+      "record_id": "BASSII-EXT-002",
+      "parameter": "extinction_velocity",
+      "value": 1.0,
+      "unit": "cm/s",
+      "uncertainty": null,
+      "fuel_thickness_um": 200,
+      "oxygen_percent": 21,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Section 2.1.2.1, p. 13",
+      "notes": "Approximate extinction velocity reported for 200 micrometre PMMA."
+    },
+    {
+      "record_id": "BASSII-EXT-003",
+      "parameter": "extinction_velocity",
+      "value": 1.0,
+      "unit": "cm/s",
+      "uncertainty": null,
+      "fuel_thickness_um": 300,
+      "oxygen_percent": 21,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Section 2.1.2.1, p. 13",
+      "notes": "Approximate extinction velocity reported for 300 micrometre PMMA."
+    },
+    {
+      "record_id": "BASSII-EXT-004",
+      "parameter": "extinction_velocity",
+      "value": 1.5,
+      "unit": "cm/s",
+      "uncertainty": null,
+      "fuel_thickness_um": 400,
+      "oxygen_percent": 21,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Section 2.1.2.1, p. 13",
+      "notes": "Approximate extinction velocity reported for 400 micrometre PMMA."
+    },
+    {
+      "record_id": "BASSII-EXT-005",
+      "parameter": "extinction_velocity",
+      "value": 2.6,
+      "unit": "cm/s",
+      "uncertainty": null,
+      "fuel_thickness_um": 100,
+      "oxygen_percent": 16,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Section 2.1.2.1, p. 13",
+      "notes": "Approximate value; NASA states that the lower-oxygen dataset is insufficient for a definitive conclusion."
+    },
+    {
+      "record_id": "BASSII-EXT-006",
+      "parameter": "extinction_velocity",
+      "value": 4.0,
+      "unit": "cm/s",
+      "uncertainty": null,
+      "fuel_thickness_um": 200,
+      "oxygen_percent": 16,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Section 2.1.2.1, p. 13",
+      "notes": "Approximate value; sample width differed from the 100 micrometre test, and NASA notes insufficient lower-oxygen data."
+    },
+    {
+      "record_id": "BASSII-EXT-007",
+      "parameter": "critical_opposed_flow_extinction_velocity",
+      "value": 10,
+      "unit": "mm/s",
+      "uncertainty": 5,
+      "fuel_thickness_um": null,
+      "oxygen_percent": 21,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Table 2.1, p. 25",
+      "notes": "Separate thin-PMMA comparison in the report; retain distinct from the Section 2.1 thickness-series values."
+    },
+    {
+      "record_id": "BASSII-EXT-008",
+      "parameter": "critical_opposed_flow_extinction_velocity",
+      "value": 30,
+      "unit": "mm/s",
+      "uncertainty": 5,
+      "fuel_thickness_um": null,
+      "oxygen_percent": 16,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Table 2.1, p. 25",
+      "notes": "Separate thin-PMMA comparison in the report."
+    },
+    {
+      "record_id": "BASSII-SPREAD-001",
+      "parameter": "flame_spread_rate",
+      "value": 2.2,
+      "unit": "mm/s",
+      "uncertainty": null,
+      "fuel_thickness_um": 100,
+      "oxygen_percent": 21,
+      "measurement_type": "experimental",
+      "gravity_condition": "microgravity",
+      "source_location": "NASA/TM-20210011385, Section 2.1.2.1, p. 13",
+      "notes": "Steady spread rate before flow was abruptly cut off in the first described test."
+    }
+  ],
+  "requested_parameter_coverage": {
+    "extinction_velocity_or_limit": "reported",
+    "soot_volume_fraction": "not reported as a numerical value in the cited BASS-II summary results used here",
+    "radiant_heat_flux": "not reported as a calibrated numerical heat-flux value; report describes an uncalibrated radiometer signal",
+    "cool_flame_dynamics": "not reported in this BASS-II dataset",
+    "peak_surface_temperature": "not reported as a numerical measurement in the cited results",
+    "flame_spread_rate": "reported for at least one described test; additional test-specific values require extraction from the underlying tables/images"
+  },
+  "data_quality_notes": [
+    "Only values explicitly reported by NASA are included.",
+    "Approximate values are identified in notes; the report cautions that low-velocity calibration has significant uncertainty.",
+    "The 16 percent oxygen tests are described by NASA as insufficient for a definitive conclusion.",
+    "The radiometer signal in BASS-II was not calibrated and must not be converted into radiant heat flux without additional calibration data.",
+    "No lunar or Martian gravity values are inferred from these ISS microgravity tests.",
+    "Null or absent fields must not be interpreted as zero."
+  ]
+}

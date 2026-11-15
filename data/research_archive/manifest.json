@@ -1,0 +1,17 @@
+{
+  "archive_name": "FLARE-X supplemental research datasets",
+  "archive_version": "1.0.0",
+  "integration_status": "supplemental_archive_only",
+  "active_application_database_modified": false,
+  "scientific_status": "pending_source_verification",
+  "important_note": "These seven JSON collections are preserved separately from the Windows application's active FLEX dataset. Do not merge their numeric values into the active experiment database or use them for comparisons/predictions until each record is checked against its cited NASA source and page/table/figure.",
+  "datasets": [
+    {"file": "FLAREX_Dataset_01_BASS_II.json", "investigation": "BASS II", "verification_status": "pending_source_verification"},
+    {"file": "FLAREX_Dataset_02_FLEX_PSI69.json", "investigation": "FLEX PSI-69", "verification_status": "pending_source_verification"},
+    {"file": "FLAREX_Dataset_03_FLEX2_CoolFlame.json", "investigation": "FLEX-2 cool flame", "verification_status": "pending_source_verification"},
+    {"file": "FLAREX_Dataset_04_SoFIE_GEL.json", "investigation": "SoFIE-GEL", "verification_status": "pending_source_verification"},
+    {"file": "FLAREX_Dataset_05_SAFFIRE_ThinFuel.json", "investigation": "SAFFIRE thin fuel", "verification_status": "pending_source_verification"},
+    {"file": "FLAREX_Dataset_06_SAFFIRE_VI_HeatRelease.json", "investigation": "SAFFIRE VI heat release", "verification_status": "pending_source_verification"},
+    {"file": "FLAREX_Dataset_07_SAFFIRE_I_FlameSpread.json", "investigation": "SAFFIRE I flame spread", "verification_status": "pending_source_verification"}
+  ]
+}
