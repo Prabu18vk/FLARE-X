@@ -1,6 +1,16 @@
 # FLARE-X: Intelligent Microgravity Fire Intelligence Platform
 **Research Decision-Support Dashboard for NASA Microgravity Combustion Research**
 
+
+# 🔥 FLARE-X
+
+## 🚀 [OPEN LIVE DASHBOARD](https://prabu18vk.github.io/FLARE-X/)
+
+**Fire Research, Analysis & Experimental Intelligence Platform**
+
+Explore the interactive research dashboard.
+
+
 > **Scientific Disclaimer:**  
 > *Research decision-support tool. Not certified spacecraft safety guidance. Not an official NASA product. This platform is NOT a certified fire detector, emergency response system, or source of operational fire suppression commands.*
 
