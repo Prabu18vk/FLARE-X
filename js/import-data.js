@@ -312,34 +312,53 @@ EXP-INVALID-MISSING,"Incomplete Test Record","Objective without pressure unit or
           });
         }
 
-        validRecords.push({
+            validRecords.push({
+          ...raw,
+
           id: id.trim(),
           name: name.trim(),
-          objective: getVal('objective') || null,
-          platform: platform ? platform.trim() : null,
-          gravity_condition: getVal('gravity_condition') || null,
-          material_fuel: material ? material.trim() : null,
-          oxygen_percent: {
-            value: o2Val !== null && o2Val !== '' ? parseFloat(o2Val) : null,
-            unit: o2Unit || null
-          },
-          pressure: {
-            value: pVal !== null && pVal !== '' ? parseFloat(pVal) : null,
-            unit: pUnit || null
-          },
-          airflow: {
-            value: flowVal !== null && flowVal !== '' ? parseFloat(flowVal) : null,
-            unit: flowUnit || null,
-            direction: 'Forced flow'
-          },
-          measured_variables: measuredVars,
-          data_files: [],
-          source_document: getVal('source_document') || null,
-          source_url: getVal('source_url') || null,
-          retrieval_date: getVal('retrieval_date') || new Date().toISOString().slice(0, 10),
-          notes: 'Imported via FLARE-X Ingestion Wizard',
+          objective: getVal('objective') || raw.objective || null,
+          platform: platform ? platform.trim() : (raw.platform || null),
+          gravity_condition: getVal('gravity_condition') || raw.gravity_condition || null,
+          material_fuel: material ? material.trim() : (raw.material_fuel || null),
+
+          oxygen_percent: raw.oxygen_percent && typeof raw.oxygen_percent === 'object'
+            ? raw.oxygen_percent
+            : {
+                value: o2Val !== null && o2Val !== '' ? parseFloat(o2Val) : null,
+                unit: o2Unit || null
+              },
+
+          pressure: raw.pressure && typeof raw.pressure === 'object'
+            ? raw.pressure
+            : {
+                value: pVal !== null && pVal !== '' ? parseFloat(pVal) : null,
+                unit: pUnit || null
+              },
+
+          airflow: raw.airflow && typeof raw.airflow === 'object'
+            ? raw.airflow
+            : {
+                value: flowVal !== null && flowVal !== '' ? parseFloat(flowVal) : null,
+                unit: flowUnit || null,
+                direction: 'Forced flow'
+              },
+
+          measured_variables: Array.isArray(raw.measured_variables)
+            ? raw.measured_variables
+            : measuredVars,
+
+          data_files: Array.isArray(raw.data_files) ? raw.data_files : [],
+
+          source_document: getVal('source_document') || raw.source_document || null,
+          source_url: getVal('source_url') || raw.source_url || null,
+          retrieval_date: getVal('retrieval_date') || raw.retrieval_date || null,
+
+          notes: raw.notes || 'Imported via FLARE-X Ingestion Wizard',
+
           provenance_per_field: {
-            'upload_source': 'User uploaded dataset'
+            ...(raw.provenance_per_field || {}),
+            upload_source: 'User uploaded dataset'
           }
         });
       }
