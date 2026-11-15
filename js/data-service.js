@@ -24,33 +24,61 @@ class DataService {
     this.RAW_STORAGE_KEY = 'flare_x_raw_upload_archive_v1';
   }
 
-  async init() {
-    // Check if custom user data exists in localStorage
-    const saved = localStorage.getItem(this.STORAGE_KEY);
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        this.experiments = parsed.experiments || [];
-        this.documents = parsed.documents || [];
-        this.relationships = parsed.relationships || { nodes: [], edges: [] };
-        this.coverageCategories = parsed.coverageCategories || null;
-        this.datasetMetadata = parsed.datasetMetadata || {
-          is_placeholder: false,
-          status: "Custom User Uploaded Dataset",
-          version: "custom",
-          total_records: this.experiments.length
-        };
-        console.log('[DataService] Loaded persisted dataset:', this.datasetMetadata);
-        this.notify();
-        return;
-      } catch (err) {
-        console.warn('[DataService] Failed to parse stored dataset, loading default files', err);
-      }
-    }
 
-    // Load from local static JSON files
-    await this.loadDefaultData();
+async init() {
+  // Always load the versioned GitHub dataset first.
+  // Do not allow old browser sample data to override it.
+  await this.loadDefaultData();
+
+  // If the combined dataset loaded successfully, use it.
+  if (
+    this.experiments.length > 0 &&
+    this.datasetMetadata.version === '2.0.0-combined'
+  ) {
+    console.log(
+      '[DataService] Active GitHub research dataset:',
+      this.experiments.length,
+      'records'
+    );
+    return;
   }
+
+  // If GitHub loading failed, retain the old saved dataset as fallback.
+  const saved = localStorage.getItem(this.STORAGE_KEY);
+
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+
+      this.experiments = parsed.experiments || [];
+      this.documents = parsed.documents || [];
+      this.relationships = parsed.relationships || {
+        nodes: [],
+        edges: []
+      };
+      this.coverageCategories = parsed.coverageCategories || null;
+      this.datasetMetadata = parsed.datasetMetadata || {
+        is_placeholder: false,
+        status: 'Previously saved dataset',
+        version: 'custom',
+        total_records: this.experiments.length
+      };
+
+      console.log(
+        '[DataService] Restored saved fallback dataset:',
+        this.experiments.length,
+        'records'
+      );
+
+      this.notify();
+    } catch (err) {
+      console.warn(
+        '[DataService] Could not restore saved dataset:',
+        err
+      );
+    }
+  }
+}
 
 async loadDefaultData() {
   // Use a preloaded bundle if one exists
