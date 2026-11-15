@@ -289,9 +289,25 @@ EXP-INVALID-MISSING,"Incomplete Test Record","Objective without pressure unit or
       }
 
       // 3. Unit presence checks
-      if (o2Val !== null && o2Val !== '' && (!o2Unit || o2Unit.trim() === '')) {
-        warnings.push({ row: rowNum, message: `Oxygen value (${o2Val}) provided without unit. Missing unit will display as "Not available".` });
-      }
+      const oxygenValue = o2Val && typeof o2Val === 'object'
+  ? o2Val.value
+  : o2Val;
+
+const oxygenUnit = o2Val && typeof o2Val === 'object'
+  ? o2Val.unit
+  : o2Unit;
+
+if (
+  oxygenValue !== null &&
+  oxygenValue !== undefined &&
+  oxygenValue !== '' &&
+  (!oxygenUnit || String(oxygenUnit).trim() === '')
+) {
+  warnings.push({
+    row: rowNum,
+    message: `Oxygen value (${oxygenValue}) provided without unit. Missing unit will display as "Not available".`
+  });
+}
       if (pVal !== null && pVal !== '' && (!pUnit || pUnit.trim() === '')) {
         warnings.push({ row: rowNum, message: `Pressure value (${pVal}) provided without unit. Unit will be unverified.` });
       }
