@@ -82,10 +82,11 @@ async init() {
 
 async loadDefaultData() {
   // Use a preloaded bundle if one exists
-  if (window.DEFAULT_FLARE_X_BUNDLE) {
-    this.applyBundle(window.DEFAULT_FLARE_X_BUNDLE);
-    return;
-  }
+  // Skip the old bundled sample data.
+// Load the combined research dataset instead.
+if (window.DEFAULT_FLARE_X_BUNDLE) {
+    console.log('[DataService] Skipping legacy default bundle.');
+}
 
   // First, try loading the complete combined research dataset
   try {
