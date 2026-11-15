@@ -52,43 +52,116 @@ class DataService {
     await this.loadDefaultData();
   }
 
-  async loadDefaultData() {
-    // If running on file:// or if fallback bundle is already loaded, use bundle first
-    if (window.DEFAULT_FLARE_X_BUNDLE) {
-      this.applyBundle(window.DEFAULT_FLARE_X_BUNDLE);
-      return;
-    }
-
-    try {
-      const [expRes, docRes, relRes, covRes] = await Promise.all([
-        fetch('data/experiments.json').then(r => r.json()),
-        fetch('data/documents.json').then(r => r.json()),
-        fetch('data/relationships.json').then(r => r.json()),
-        fetch('data/coverage_categories.json').then(r => r.json())
-      ]);
-
-      this.experiments = expRes.experiments || [];
-      this.datasetMetadata = expRes.dataset_metadata || {
-        is_placeholder: true,
-        status: "PLACEHOLDER SAMPLE DATA, replace with real NASA records",
-        version: "1.0.0-placeholder"
-      };
-      this.datasetMetadata.total_records = this.experiments.length;
-      this.documents = docRes.documents || [];
-      this.relationships = relRes || { nodes: [], edges: [] };
-      this.coverageCategories = covRes.coverage_axes || null;
-
-      console.log(`[DataService] Initialized default dataset: ${this.experiments.length} experiments, ${this.documents.length} docs`);
-      this.notify();
-    } catch (err) {
-      console.warn('[DataService] Fetch failed, checking for fallback bundle...', err);
-      if (window.DEFAULT_FLARE_X_BUNDLE) {
-        this.applyBundle(window.DEFAULT_FLARE_X_BUNDLE);
-      } else {
-        console.error('[DataService] Could not load default datasets');
-      }
-    }
+async loadDefaultData() {
+  // Use a preloaded bundle if one exists
+  if (window.DEFAULT_FLARE_X_BUNDLE) {
+    this.applyBundle(window.DEFAULT_FLARE_X_BUNDLE);
+    return;
   }
+
+  // First, try loading the complete combined research dataset
+  try {
+    const response = await fetch(
+      'data/raw/flarex_everything_combined.json',
+      { cache: 'no-store' }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Combined dataset request failed: ${response.status}`);
+    }
+
+    const records = await response.json();
+
+    if (!Array.isArray(records) || records.length === 0) {
+      throw new Error('Combined dataset is not a valid non-empty JSON array.');
+    }
+
+    this.experiments = records;
+
+    this.datasetMetadata = {
+      is_placeholder: false,
+      status: 'Combined research dataset — source verification pending',
+      version: '2.0.0-combined',
+      total_records: records.length,
+      source_file: 'data/raw/flarex_everything_combined.json',
+      scientific_status: 'Preserved source records; not independently validated'
+    };
+
+    // Load supporting dashboard files where available
+    const [docRes, relRes, covRes] = await Promise.allSettled([
+      fetch('data/documents.json').then(r => {
+        if (!r.ok) throw new Error('Documents unavailable');
+        return r.json();
+      }),
+      fetch('data/relationships.json').then(r => {
+        if (!r.ok) throw new Error('Relationships unavailable');
+        return r.json();
+      }),
+      fetch('data/coverage_categories.json').then(r => {
+        if (!r.ok) throw new Error('Coverage categories unavailable');
+        return r.json();
+      })
+    ]);
+
+    this.documents = docRes.status === 'fulfilled'
+      ? (docRes.value.documents || [])
+      : [];
+
+    this.relationships = relRes.status === 'fulfilled'
+      ? relRes.value
+      : { nodes: [], edges: [] };
+
+    this.coverageCategories = covRes.status === 'fulfilled'
+      ? (covRes.value.coverage_axes || null)
+      : null;
+
+    console.log(
+      `[DataService] Loaded combined dataset: ${records.length} records`
+    );
+
+    this.notify();
+    return;
+
+  } catch (err) {
+    console.warn(
+      '[DataService] Combined dataset unavailable; trying legacy files.',
+      err
+    );
+  }
+
+  // Legacy fallback
+  try {
+    const [expRes, docRes, relRes, covRes] = await Promise.all([
+      fetch('data/experiments.json').then(r => r.json()),
+      fetch('data/documents.json').then(r => r.json()),
+      fetch('data/relationships.json').then(r => r.json()),
+      fetch('data/coverage_categories.json').then(r => r.json())
+    ]);
+
+    this.experiments = expRes.experiments || [];
+
+    this.datasetMetadata = expRes.dataset_metadata || {
+      is_placeholder: true,
+      status: 'Legacy fallback dataset',
+      version: '1.0.0-placeholder'
+    };
+
+    this.datasetMetadata.total_records = this.experiments.length;
+    this.documents = docRes.documents || [];
+    this.relationships = relRes || { nodes: [], edges: [] };
+    this.coverageCategories = covRes.coverage_axes || null;
+
+    console.log(
+      `[DataService] Loaded legacy dataset: ${this.experiments.length} records`
+    );
+
+    this.notify();
+
+  } catch (err) {
+    console.error('[DataService] Could not load any dataset:', err);
+  }
+}
+
 
   applyBundle(bundle) {
     this.experiments = bundle.experiments || [];
