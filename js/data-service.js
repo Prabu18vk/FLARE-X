@@ -352,47 +352,70 @@ if (window.DEFAULT_FLARE_X_BUNDLE) {
    * If currently on placeholder dummy data, cleanly replaces placeholder records with real data.
    * Returns a summary: { added, updated, prevTotal, totalAfter }
    */
+
+  /**
+   * Append new experiments without overwriting existing records.
+   * Duplicate IDs are skipped to protect existing scientific data.
+   */
   appendToCollection(newExperiments, meta = {}) {
     const isPlaceholder = this.isPlaceholder();
     const prevTotal = isPlaceholder ? 0 : this.experiments.length;
 
-    // If currently on placeholder sample data, initialize fresh with the first real dataset
     if (isPlaceholder) {
       this.experiments = [];
     }
 
-    const existingIds = new Map(this.experiments.map(e => [e.id, e]));
-    let added = 0, updated = 0;
+    const existingIds = new Set(
+      this.experiments
+        .map(e => e.id)
+        .filter(id => id !== null && id !== undefined && String(id).trim() !== '')
+        .map(id => String(id).trim())
+    );
+
+    let added = 0;
+    let skipped = 0;
 
     newExperiments.forEach(exp => {
-      if (existingIds.has(exp.id)) {
-        // Update in-place: update the existing record
-        const idx = this.experiments.findIndex(e => e.id === exp.id);
-        if (idx !== -1) this.experiments[idx] = exp;
-        updated++;
-      } else {
-        this.experiments.push(exp);
-        added++;
+      if (!exp || !exp.id || String(exp.id).trim() === '') {
+        skipped++;
+        return;
       }
+
+      const id = String(exp.id).trim();
+
+      if (existingIds.has(id)) {
+        skipped++;
+        return;
+      }
+
+      this.experiments.push(exp);
+      existingIds.add(id);
+      added++;
     });
 
-    // Update metadata: track all sources
     const prevSources = (!isPlaceholder && this.datasetMetadata && this.datasetMetadata.sources)
       ? this.datasetMetadata.sources
       : (!isPlaceholder && this.datasetMetadata && this.datasetMetadata.status)
-        ? [{ name: this.datasetMetadata.status, count: prevTotal, date: this.datasetMetadata.imported_date || 'Earlier' }]
+        ? [{
+            name: this.datasetMetadata.status,
+            count: prevTotal,
+            date: this.datasetMetadata.imported_date || 'Earlier'
+          }]
         : [];
 
     const newSource = {
       name: meta.name || 'Imported Dataset',
       count: newExperiments.length,
       added,
-      updated,
+      updated: 0,
+      skipped,
       date: new Date().toISOString()
     };
 
     const allSources = [...prevSources, newSource];
-    const sourceLabel = allSources.map(s => `${s.name} (${s.count})`).join(' + ');
+    const sourceLabel = allSources
+      .map(s => `${s.name} (${s.count})`)
+      .join(' + ');
 
     this.datasetMetadata = {
       ...this.datasetMetadata,
@@ -406,8 +429,15 @@ if (window.DEFAULT_FLARE_X_BUNDLE) {
     this._persistBundle();
     this.notify();
 
-    return { added, updated, prevTotal, totalAfter: this.experiments.length };
+    return {
+      added,
+      updated: 0,
+      skipped,
+      prevTotal,
+      totalAfter: this.experiments.length
+    };
   }
+
 
   _persistBundle() {
     try {
